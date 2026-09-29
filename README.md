@@ -33,7 +33,7 @@ Kiểm tra lại bất cứ lúc nào: `./scripts/check.sh`
 
 ```bash
 cd kite-video-studio
-./studio        # mở Claude Opus 5.5 ở mức nỗ lực cao nhất cho video mới
+./studio        # mở Claude Opus 5.5 ở mức nỗ lực rất cao (xhigh) cho video mới
 ```
 
 Rồi gõ, ví dụ:
