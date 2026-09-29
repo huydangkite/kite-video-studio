@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx hyperframes:*)",
+      "Bash(npx -y hyperframes:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(ffprobe:*)",
+      "Bash(node:*)",
+      "Bash(./scripts/check.sh)",
+      "Bash(scripts/check.sh)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(ls:*)"
+    ],
+    "deny": [
+      "Read(./.env)"
+    ]
+  }
+}

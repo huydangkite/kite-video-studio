@@ -1,0 +1,1 @@
+Mỗi video một thư mục: `videos/<ngày>-<tên-ngắn>/` gồm `inputs/` (tài nguyên bạn gửi), `INTAKE.md` (kế hoạch), `project/` (bản dựng), `review/` (ảnh kiểm tra), `final/` (video hoàn chỉnh). Thư mục này không được đưa lên kho chung.
