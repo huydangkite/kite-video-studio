@@ -52,5 +52,5 @@ Use the `kite-video` skill for every new video. It owns the flow:
 
 ## Effort
 
-Start a new video with `/effort xhigh` (brief, look and first build); `max` when the first seconds
+The `./studio` launcher already opens Opus 5.5 at xhigh. Start a new video at xhigh (brief, look and first build); `max` when the first seconds
 must carry a launch; medium for small fixes and re-renders. Tell the colleague this once at the start.

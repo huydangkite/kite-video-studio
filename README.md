@@ -27,11 +27,13 @@ cd kite-video-studio
 
 Kiểm tra lại bất cứ lúc nào: `./scripts/check.sh`
 
+**Không cần cài thêm** Python/librosa (HyperFrames tự bắt nhịp nhạc), Playwright (HyperFrames có trình duyệt riêng) hay Remotion (một bộ dựng là đủ).
+
 ## 2. Làm video đầu tiên
 
 ```bash
 cd kite-video-studio
-claude
+./studio        # mở Claude Opus 5.5 ở mức nỗ lực cao nhất cho video mới
 ```
 
 Rồi gõ, ví dụ:

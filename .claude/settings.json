@@ -15,5 +15,6 @@
     "deny": [
       "Read(./.env)"
     ]
-  }
+  },
+  "model": "claude-opus-5-5"
 }
