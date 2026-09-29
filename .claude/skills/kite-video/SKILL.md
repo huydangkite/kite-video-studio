@@ -1,126 +1,112 @@
 ---
 name: kite-video
-description: Company entry point for making a marketing video or a feature-demo video of a web or mobile product. Use FIRST whenever a colleague in this studio asks to make, create or plan a video ("làm video", "video demo", "video giới thiệu", "promo", "launch video"). Runs the intake, collects and checks the resources, writes INTAKE.md, then hands production to the hyperframes skill with every answer pre-filled, and closes with a frame critique loop.
+description: The producer's playbook for making a marketing video or a feature-demo video of a web or mobile product. Use FIRST whenever a colleague in this studio asks to make, plan or revise a video ("làm video", "video demo", "video giới thiệu", "promo", "launch video"). Five phases - intake, script, review with the colleague, a self-contained production brief (PROMPT.md), then crew production with a critique loop.
 ---
 
-# Kite Video — intake, resources, hand-off
+# Kite Video — the producer's playbook
 
-HyperFrames and media-use already know how to design, voice and render a video. This skill adds
-what they cannot know: **our** two video types, what each one needs from the colleague, our brand
-kit, and a quality bar. Its job ends when `hyperframes` has a complete intake; it comes back for the
-critique loop and delivery.
+You are the producer (`CLAUDE.md`). You talk to the colleague; the crew works through the Agent
+tool. Every crew call gets **file paths, not chat history**: the video folder, `INTAKE.md`,
+`PROMPT.md`, `brand/brand.md`, and the specific task. Run independent crew calls in parallel.
 
-Talk per `CLAUDE.md`: the colleague's language (Vietnamese by default), one question at a time,
-a recommended default with every question.
+Phases are strict: do not start a phase before the previous one's exit condition holds.
 
-## 0. Before the first question
+---
 
-1. Run `scripts/check.sh` quietly. If something is missing, tell the colleague in one sentence what to
-   run (`scripts/setup.sh`) and stop until it passes. Do not debug their machine.
-2. Read `brand/brand.md`. If it is still the empty template, note it: you will ask for brand basics
-   during resources.
-3. If the colleague's first message already answers some questions below, do not ask them again.
+## Phase 0 — Before the first question
 
-## 1. Intake — the questions, in this order
+1. Run `scripts/check.sh` quietly. If something required is missing, tell the colleague in one
+   sentence to run `scripts/setup.sh`, and stop. Do not debug their machine.
+2. Read `brand/brand.md`. If it is still the template, you will ask for brand basics in Phase 1.
+3. If `videos/*/PROMPT.md` exists for the video they mention, this is a **revision** → jump to
+   "Revisions" at the end.
 
-Ask only what is still unknown. Stop asking once you can fill every field of `INTAKE.md`.
+## Phase 1 — Khai thác (intake)
 
-1. **Kind** — marketing video, or feature demo? (Default: infer from their wording; confirm.)
-2. **Product & platform** — which product, web or mobile (iOS / Android / both)?
-3. **Viewer** — who watches it and what they should do afterwards (sign up, try the feature, book a
-   demo, understand a change). This becomes the call to action.
-4. **The one message** — in one sentence, what should the viewer remember? Offer two or three
-   candidate sentences from what you know; let them pick or edit.
-5. **Where it will be posted** → format. Website/YouTube/email → 16:9; LinkedIn/Facebook feed → 1:1;
-   TikTok/Reels/Shorts/app stores → 9:16. Several places → several formats from one build.
-6. **Length** — marketing 15/30/45s (default 30), demo 45/60/90s (default 60).
-7. **Language & voice** — voice-over language (default Vietnamese), male/female/neutral, calm or
-   energetic. No voice-over (music + on-screen text only) is a valid answer.
-8. **Music** — upbeat, calm, corporate, none. (Default: calm for demos, upbeat for marketing.)
-9. **Look** — a reference they like: a frame (screenshot of a video), a video file/link, or a
-   competitor's launch film. Default: the company house style from `brand/`. With a reference,
-   extract a few frames (ffmpeg), describe palette, type, pacing and transitions shot by shot, and
-   write `videos/<slug>/style_guide.md` — what to take and what **not** to take (never copy its
-   subject or brand). Without a reference, the model falls back to centered text on a gradient;
-   the brand kit plus a named style ("Apple keynote", "Linear launch", "hand-drawn") beats that.
-10. **Review mode** — see a storyboard (still layouts) before the full build, or go straight to the
-   video? Default: storyboard for the colleague's first video of this kind, straight through after.
+Ask in this order, one at a time, skipping anything their first message already answered
+(`references/intake.md` has the wording and defaults):
 
-Then read the matching reference and go to resources:
-- marketing → `references/marketing.md`
-- feature demo → `references/feature-demo.md`
+1. Kind — marketing video or feature demo.
+2. Product & platform — web / iOS / Android.
+3. Viewer and the action they should take.
+4. **Message** — here call `marketer` (marketing) or `product-educator` (demo) with what you know;
+   present their 2–3 candidate messages and your pick.
+5. Where it is posted → formats. 6. Length. 7. Voice (language, gender, tone) or none.
+8. Music mood. 9. **Look** — a reference video/frame they like, or the house style.
+10. Review mode — storyboard sketches first, or straight to the final video.
 
-## 2. Resources — ask, receive, verify
+Create `videos/<yyyy-mm-dd>-<slug>/inputs/`, then collect resources per `references/resources.md`:
+one group at a time (screens → brand → words), verify each item as it arrives, and say what you
+found. With a style reference, have `motion-designer` (mode: look) write `style_guide.md` now.
 
-Open `references/resources.md` for the full checklist per kind × platform. Rules:
+Write everything to `INTAKE.md` (`references/intake-template.md`).
+**Exit:** every required resource is ✅, or the colleague accepted a stated fallback.
 
-- Create the video folder now: `videos/<yyyy-mm-dd>-<short-slug>/inputs/`. Tell the colleague they
-  can drag files into the terminal or give a path; copy everything they give into `inputs/`.
-- Ask for resources **one group at a time** (screens → brand → copy), not as one long list.
-  Show the whole checklist once, as a short preview, so they know what is coming.
-- **Verify every item as it arrives**, and say what you found:
-  - link → open it (capture or fetch); report if it needs login, is a 404, or redirects elsewhere.
-  - screen recording → probe it with ffprobe: duration, resolution, orientation; flag < 720p,
-    notification banners, personal data visible (look at a few frames).
-  - image / logo → real file, resolution, transparent background for logos.
-  - document → read it and quote back the 2–3 facts you will use.
-- **Never fabricate.** No invented screens, features, prices, customer names or numbers. If a scene
-  needs something they cannot provide, propose a design-only scene (typography, icons, abstract UI)
-  and say so.
-- Keep a live checklist in `INTAKE.md` (✅ received & checked / ⚠️ usable with caveat / ❌ missing).
-  Continue only when every **required** item is ✅ or the colleague explicitly accepts a fallback.
+## Phase 2 — Kịch bản (script)
 
-## 3. Plan — INTAKE.md, then approval
+Call in parallel:
+- `scriptwriter` → `script.md`: beat table (time · on screen · voice-over · on-screen text),
+  speech pace ~2.5 words/s Vietnamese, ~2.3 English, total within ±10% of the length.
+- `director` → `shotlist.md`: per beat the shot, the motion idea, the transition, the sound cue,
+  and the reference blueprint (`references/motion-rules.md`).
 
-Write `videos/<slug>/INTAKE.md` using `references/intake-template.md`: every answer from step 1, the
-resource checklist, and a **beat-by-beat draft script** (time range · what is on screen · voice-over
-line · on-screen text). Voice-over pace: about 2.5 words/second in Vietnamese, 2.3 in English —
-check the draft fits the length.
+Then have `director` reconcile both into one beat sheet in `script.md` (director wins on picture
+and pacing, scriptwriter on words, marketer/educator on message).
+**Exit:** one beat sheet that fits the length and uses only real resources.
 
-Show the colleague the script as a short table and ask one question: approve, or what to change.
-Loop until approved. This approval is the only content gate before rendering.
+## Phase 3 — Trao đổi (review with the colleague)
 
-## 4. Hand-off to HyperFrames
+Present the beat sheet as a short table in chat, then the look in 2–3 lines, then **one** question:
+"Duyệt, hay muốn đổi chỗ nào?". Credit the crew where it matters.
 
-Invoke the `hyperframes` skill with a message that says:
+- Content edits → you apply small ones; larger ones go back to `scriptwriter` / `director`.
+- **Voice sample:** once the words are near-final, have `sound-designer` generate the first line in
+  2 candidate voices; the colleague picks one.
+- Loop until they say yes. Record the approval (date, their words) in `INTAKE.md`.
+**Exit:** explicit approval of script + voice.
 
-- This is a **formed request**; every answer in `videos/<slug>/INTAKE.md` is confirmed by the user —
-  do not re-ask them, skip the pitch round, ask only fields the route still lacks.
-- Project directory: `videos/<slug>/project/` (let `hyperframes init` create it; `INTAKE.md` and
-  `inputs/` stay one level up).
-- Route: see the reference for this kind (`product-launch-video` for marketing and public-site
-  tours; `general-video` for demos built on screen recordings or mobile).
-- Brand: `brand/` is the design system source — colours, fonts, logo file, tone. Logo is never redrawn.
-- Voice-over is the approved script, **verbatim** (`VO_MODE: verbatim`), in the chosen language.
-  Voice, music and SFX through `media-use` (see `references/voice-and-audio.md`).
-- Formats to deliver: the list from intake, each laid out for its frame, never cropped from 16:9.
-- Look: `videos/<slug>/style_guide.md` when there is one, else the brand kit. Motion quality bar:
-  follow `hyperframes-animation` rules — spring-like easing with a hair of overshoot on UI, none on
-  type; one focal point per beat; a visual change every 3–5s; no "everything fades in" default.
-- Review mode: `storyboard: yes` (collaborative) or `no` (autonomous) from intake.
-- Check `media-use` recipes first: if a company recipe for this kind exists (e.g.
-  `kite-feature-demo`), adopt it.
+## Phase 4 — Bản giao việc (the production brief)
 
-From here HyperFrames drives production. Stay available: answer its questions from `INTAKE.md`
-when possible; pass to the colleague only what `INTAKE.md` cannot answer.
+Call `director` to write `videos/<slug>/PROMPT.md` from `references/brief-template.md`, using only
+`INTAKE.md`, `script.md`, `style_guide.md` (if any), `brand/brand.md` and the reference files for
+this kind (`references/marketing.md` or `references/feature-demo.md`, `motion-rules.md`,
+`voice-and-audio.md`, `critique.md`).
 
-## 5. Critique loop (before showing the colleague any render)
+`PROMPT.md` must stand alone: a fresh session with only this file and the repo must be able to
+make the video. Check it yourself against the template's checklist before production. Tell the
+colleague in one line that the brief is saved and they can reuse or share it.
 
-Follow `references/critique.md`: snapshot key frames, hand them to the `critic` agent with
-`INTAKE.md` and `brand/brand.md`, fix the three worst problems, repeat. Stop when every axis scores
-8+, after 3 rounds, or when the score stops improving — and tell the colleague which issues remain.
+## Phase 5 — Sản xuất (production)
 
-## 6. Delivery
+Everything below reads `PROMPT.md`, not the chat.
 
-Put finals in `videos/<slug>/final/`: `<slug>-16x9.mp4` (etc. per format), `poster.png`, and
-`contact-sheet.png` (one still per beat), and `SUMMARY.md` (length, formats, voice, music, sources
-used, known limitations). Tell the colleague
-where the files are, offer to open the preview, and ask what they would like changed.
+1. **Audio first** — `sound-designer`: every voice line, measured; music bed; SFX list;
+   `audio/timing.json` (per beat: start, end from the real voice length + ~0.3s).
+2. **Setup** — `video-engineer`: `hyperframes init` in `videos/<slug>/project/`, write HyperFrames'
+   `BRIEF.md` from `PROMPT.md` (formed request, every field confirmed, `VO_MODE: verbatim`, route
+   from the brief), captures and assets, root composition timed to `audio/timing.json`.
+3. **Storyboard** (only if chosen) — `motion-designer` (mode: storyboard) sketches every beat as
+   stills (HyperFrames `storyboard.html`). Show the colleague the file; one question; loop.
+4. **Build** — one `motion-designer` per beat (mode: scene), in parallel batches of up to 4, each
+   given its beat from `PROMPT.md` and the sub-composition path. HyperFrames' own frame-worker rules
+   apply (`hyperframes/references/frame-worker-core.md`).
+5. **Assemble & check** — `video-engineer`: assemble, `npx hyperframes check` until clean, mix in
+   the audio from `sound-designer`.
+6. **Critique loop** — `references/critique.md`: `video-engineer` makes the review sheets, `qa`
+   scores, you route each of the three worst problems to the right crew member, repeat. Stop at
+   all 8+, 3 rounds, or no improvement.
+7. **Formats & final** — `video-engineer`: primary format final, then each other format as its own
+   layout; `qa` checks each once; finals into `final/`.
 
-Once the colleague approves the video, offer **once** to save it as a recipe (`media-use` recipe
-freeze) named after the kind, e.g. `kite-marketing-mobile` — the next video of that kind then starts
-with brand, formats, voice and structure pre-filled. Tell the studio owner when a recipe is good
-enough to share with everyone.
+Deliver: tell the colleague where the files are, what is in the video in two sentences, anything
+`qa` still flagged, and offer to open the preview. Then offer **once** to save it as a recipe
+(`media-use` recipe freeze, e.g. `kite-marketing-mobile`) so the next video of this kind starts
+pre-filled.
 
-**Revisions** are small edits to the existing project — never a rebuild. Update `INTAKE.md` when the
-content changes so the next session starts from the truth.
+## Revisions
+
+A revision is a small edit to the existing project — never a rebuild.
+1. Translate the request into crew terms (camera words are fine: "slow the zoom to 0.7×", "hard
+   cut here", "push in on the button").
+2. Update `PROMPT.md` (and `script.md` if words change) and add a line to its Revisions section.
+3. Send only the affected beats to the owner of that problem; `qa` re-checks those beats.

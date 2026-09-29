@@ -17,6 +17,8 @@ Goal: make the viewer want the product (or the release) and act on the call to a
 ## Rules
 
 - Sell benefits, show features: every product screen gets a benefit headline, not a feature name.
+- Don't paste screenshots flat: break them into components (cards, buttons, icons, text) and
+  animate those; keep one flat "this is the real product" moment at most.
 - Real screens beat mock-ups. Public web → capture the site. Logged-in or mobile → use their
   recordings/screenshots, framed in a device or browser chrome, with zoom-ins on the part that matters.
 - On-screen text ≤ 7 words per card; the voice-over carries the rest.

@@ -1,20 +1,22 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx hyperframes:*)",
-      "Bash(npx -y hyperframes:*)",
+      "Bash(./scripts/check.sh)",
+      "Bash(cp:*)",
       "Bash(ffmpeg:*)",
       "Bash(ffprobe:*)",
-      "Bash(node:*)",
-      "Bash(./scripts/check.sh)",
-      "Bash(scripts/check.sh)",
+      "Bash(heygen:*)",
+      "Bash(ls:*)",
       "Bash(mkdir:*)",
-      "Bash(cp:*)",
-      "Bash(ls:*)"
+      "Bash(node:*)",
+      "Bash(npx -y hyperframes:*)",
+      "Bash(npx hyperframes:*)",
+      "Bash(scripts/check.sh)"
     ],
     "deny": [
       "Read(./.env)"
-    ]
+    ],
+    "defaultMode": "acceptEdits"
   },
   "model": "claude-opus-5-5"
 }
