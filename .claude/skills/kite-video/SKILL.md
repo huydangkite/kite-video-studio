@@ -37,6 +37,14 @@ Ask only what is still unknown. Stop asking once you can fill every field of `IN
 7. **Language & voice** — voice-over language (default Vietnamese), male/female/neutral, calm or
    energetic. No voice-over (music + on-screen text only) is a valid answer.
 8. **Music** — upbeat, calm, corporate, none. (Default: calm for demos, upbeat for marketing.)
+9. **Look** — a reference they like: a frame (screenshot of a video), a video file/link, or a
+   competitor's launch film. Default: the company house style from `brand/`. With a reference,
+   extract a few frames (ffmpeg), describe palette, type, pacing and transitions shot by shot, and
+   write `videos/<slug>/style_guide.md` — what to take and what **not** to take (never copy its
+   subject or brand). Without a reference, the model falls back to centered text on a gradient;
+   the brand kit plus a named style ("Apple keynote", "Linear launch", "hand-drawn") beats that.
+10. **Review mode** — see a storyboard (still layouts) before the full build, or go straight to the
+   video? Default: storyboard for the colleague's first video of this kind, straight through after.
 
 Then read the matching reference and go to resources:
 - marketing → `references/marketing.md`
@@ -86,6 +94,12 @@ Invoke the `hyperframes` skill with a message that says:
 - Voice-over is the approved script, **verbatim** (`VO_MODE: verbatim`), in the chosen language.
   Voice, music and SFX through `media-use` (see `references/voice-and-audio.md`).
 - Formats to deliver: the list from intake, each laid out for its frame, never cropped from 16:9.
+- Look: `videos/<slug>/style_guide.md` when there is one, else the brand kit. Motion quality bar:
+  follow `hyperframes-animation` rules — spring-like easing with a hair of overshoot on UI, none on
+  type; one focal point per beat; a visual change every 3–5s; no "everything fades in" default.
+- Review mode: `storyboard: yes` (collaborative) or `no` (autonomous) from intake.
+- Check `media-use` recipes first: if a company recipe for this kind exists (e.g.
+  `kite-feature-demo`), adopt it.
 
 From here HyperFrames drives production. Stay available: answer its questions from `INTAKE.md`
 when possible; pass to the colleague only what `INTAKE.md` cannot answer.
@@ -99,8 +113,14 @@ Follow `references/critique.md`: snapshot key frames, hand them to the `critic` 
 ## 6. Delivery
 
 Put finals in `videos/<slug>/final/`: `<slug>-16x9.mp4` (etc. per format), `poster.png`, and
-`SUMMARY.md` (length, formats, voice, music, sources used, known limitations). Tell the colleague
+`contact-sheet.png` (one still per beat), and `SUMMARY.md` (length, formats, voice, music, sources
+used, known limitations). Tell the colleague
 where the files are, offer to open the preview, and ask what they would like changed.
+
+Once the colleague approves the video, offer **once** to save it as a recipe (`media-use` recipe
+freeze) named after the kind, e.g. `kite-marketing-mobile` — the next video of that kind then starts
+with brand, formats, voice and structure pre-filled. Tell the studio owner when a recipe is good
+enough to share with everyone.
 
 **Revisions** are small edits to the existing project — never a rebuild. Update `INTAKE.md` when the
 content changes so the next session starts from the truth.
