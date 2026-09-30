@@ -9,19 +9,25 @@ Everything after that is the same pipeline: the files become resources like any 
 ## Check, then ask (Phase 0 checks, Phase 1 question 11 asks)
 
 **Check (silently, Phase 0):**
-- Voice / music / SFX: the ElevenLabs line of `scripts/check.sh`.
+- Voice: ready with **either** key — ElevenLabs (default) or Gemini (Gemini TTS).
+- Music: ElevenLabs Music; with only a Gemini key, Lyria through `media-use`.
+- SFX and word alignment: ElevenLabs only (alignment falls back to local `npx hyperframes transcribe`).
+- Keys: the ElevenLabs and Gemini lines of `scripts/check.sh`.
 - AI people (only if the video will use them): `claude mcp list` shows `higgsfield` connected.
 
-**Ask (a) — only if something this video needs is missing,** one message, e.g.:
+**Ask (a) — only if something this video needs is missing,** one message. With neither key, e.g.:
 "Máy chưa có key ElevenLabs (để mình tự tạo giọng đọc, nhạc, hiệu ứng). Bạn có muốn thêm không?
 Mở file `.env` trong thư mục studio, dán key vào dòng `ELEVENLABS_API_KEY=`, lưu lại rồi báo mình.
 Đừng dán key vào chat nhé." For Higgsfield: "gõ `/mcp`, chọn higgsfield → Authenticate".
-Default: "Không, làm thủ công". If they add it, re-check before question (b).
+With only a Gemini key, voice and music are covered; mention that SFX would be manual and offer
+the ElevenLabs key as optional. Default: "Không, làm thủ công". If they add a key, re-check before
+question (b).
 
 **Ask (b) — API or manual,** for each provider that is ready, with an estimate:
 "Phần âm thanh: mình tự tạo qua API (ElevenLabs, khoảng ~N giây giọng, ~N giây nhạc, N hiệu ứng,
 tính vào tài khoản công ty), hay bạn tự tạo theo prompt mình soạn? Mặc định: API."
-Mixed answers are fine (API for voice, manual for AI people). Nothing ready and nothing added →
+With only a Gemini key, the estimate names Gemini TTS for voice and Lyria for music. Mixed answers
+are fine (API for voice, manual for AI people). Nothing ready and nothing added →
 manual, no question.
 
 Record in `INTAKE.md`: `Generation: voice api|manual · music api|manual · sfx api|manual ·

@@ -15,8 +15,9 @@ Scripts live in `.claude/skills/kite-video/scripts/` (`S` below).
 Tasks:
 
 - **voice-sample** — the first script line in 2 candidate voices matching the intake (language,
-  gender, tone): Vietnamese voices from the ElevenLabs library through `media-use` →
-  `audio/samples/`. Report the voice ids, model and settings.
+  gender, tone): Vietnamese voices from the ElevenLabs library through `media-use` (or Gemini TTS
+  voices with a style prompt when only the Gemini key is set) → `audio/samples/`. Report the voice
+  ids, model and settings.
 - **audio** — everything the picture is timed to:
   1. Every voice-over line verbatim (using `say` where given), chosen voice and style →
      `audio/vo/<beat>-<n>.wav`, trimmed to its words (0.08s pre-roll, 0.15s tail).

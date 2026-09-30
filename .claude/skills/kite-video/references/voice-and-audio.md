@@ -18,7 +18,7 @@ usage before the first paid call of a video.
      that covers Vietnamese (Flash/Turbo v2.5 or v3) and a native Vietnamese voice from the voice
      library (or the company's cloned voice). Keep the same model, voice id and voice settings for
      every line of a video, so lines generated separately sound like one read.
-  2. **Gemini TTS** — when the colleague wants delivery directed by a prompt: `media-use` with `provider: "gemini"`, model
+  2. **Gemini TTS** — when only the Gemini key is set, or the colleague wants delivery directed by a prompt: `media-use` with `provider: "gemini"`, model
      `gemini-3.8-flash-tts`, a prebuilt voice (e.g. Kore, Puck, Fenrir) and a **style** prompt that
      directs delivery. Style prompts that worked: *keynote* "Energetic, upbeat tech product launch
      announcer. Confident, warm and playful, fast pace, crisp diction, smiling voice."; *hype*

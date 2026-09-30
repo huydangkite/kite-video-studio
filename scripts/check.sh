@@ -34,6 +34,6 @@ fi
 has_key() { [ -n "${!1:-}" ] || { [ -f .env ] && grep -q "^$1=.\+" .env; }; }
 has_key ELEVENLABS_API_KEY && ok "ElevenLabs key (giọng đọc, nhạc, hiệu ứng)" \
   || warn "ElevenLabs key" "chưa có trong .env — chưa tạo được giọng đọc, nhạc nền và hiệu ứng"
-has_key GEMINI_API_KEY     && ok "Gemini key (tuỳ chọn)" || true
+has_key GEMINI_API_KEY     && ok "Gemini key (giọng đọc Gemini, nhạc Lyria)" || true
 
 exit $fail
