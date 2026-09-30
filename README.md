@@ -16,7 +16,7 @@ Cần: máy Mac, tài khoản Claude của công ty.
 curl -fsSL https://claude.ai/install.sh | bash
 
 # 2. Lấy studio về
-git clone <địa-chỉ-repo-công-ty>/kite-video-studio.git
+git clone https://github.com/huydangkite/kite-video-studio.git
 cd kite-video-studio
 
 # 3. Cài công cụ dựng video, giọng đọc, nhạc
