@@ -42,6 +42,12 @@ closest HyperFrames-safe equivalent):
 - Cut on voice pauses; land hits on the music's downbeats (`hyperframes beats`) when there is music,
   but voice timing always wins over the beat.
 - Hold the final CTA ≥ 2s, still.
+- **Anchor to words, not seconds.** Reveals land on the spoken word from `audio/timing.json`
+  (`words`), e.g. "the chip pops on *đồng bộ*". Offsets from a beat start are the fallback only.
+- **Rotate transitions.** Each style lists its transitions; no two neighbouring beats use the same
+  one. Scene cuts sit on beats; the big moments (music drops) get the style's strongest accent.
+- **Beat reactions are texture.** A background layer may pulse on downbeats (≤ 1.5% scale or +10%
+  opacity); cuts and drops carry the rhythm, not constant pulsing.
 
 ## Go-to blueprints for our two video types
 
@@ -60,6 +66,23 @@ closest HyperFrames-safe equivalent):
 
 Before hand-building a named effect (glitch, grain, shimmer, confetti, chart), search the registry
 (`hyperframes-registry`) — ~400 blocks exist.
+
+## Styles
+
+The look comes from a named style (`styles.md`, `style-catalog.md`). Its tier, eases, signature
+move and transitions refine this file; they never override the banned look.
+
+## Renderer limits (learned the hard way)
+
+- More than ~40 elements with `radial-gradient`, `filter: blur()` or `clip-path` on screen produced
+  black frames. **Bake textures** (grain, halftone, paper, colour fields, dot grids) into PNG tiles
+  under `project/assets/images/` and use them as `background-image` / `mask-image`.
+- Attach SVG filters (RGB split, glitch) only while the effect runs: `tl.set(el, {filter: "url(#x)"})`,
+  back to `none` a few frames later.
+- Hide heavy full-frame layers with `visibility`, not `opacity: 0`.
+- `immediateRender: false` on `fromTo` tweens of layers shared across cuts (flash, wipe, speed
+  lines); otherwise the first tween's start state leaks to time 0.
+- Build all DOM before the first tween; randomness only from a seeded generator.
 
 ## Text on screen
 

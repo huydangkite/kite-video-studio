@@ -22,23 +22,21 @@ if ! command -v node >/dev/null 2>&1 || [ "$(node -p 'process.versions.node.spli
 fi
 command -v ffmpeg >/dev/null 2>&1 || brew install ffmpeg
 
+say "Python numpy (căn nhạc theo beat)"
+python3 -c 'import numpy' 2>/dev/null || python3 -m pip install --user numpy \
+  || echo "Không cài được numpy — video vẫn làm được, chỉ thiếu bước căn điểm drop của nhạc."
+
 say "HyperFrames skills (cho Claude Code)"
 npx -y hyperframes@latest skills
 
 say "Trình duyệt dùng để dựng video"
 npx -y hyperframes@latest browser ensure
 
-say "HeyGen CLI (giọng đọc, nhạc nền, hiệu ứng âm thanh)"
-if ! command -v heygen >/dev/null 2>&1; then
-  echo "Cài HeyGen CLI theo hướng dẫn chính thức: https://developers.heygen.com/cli"
-  echo "Cài xong, chạy lại script này."
-else
-  heygen update || true
-  heygen auth login --oauth
-fi
 
 say "File cấu hình"
 [ -f .env ] || cp .env.example .env
+echo "Mở file .env và điền ELEVENLABS_API_KEY (giọng đọc, nhạc, hiệu ứng); GEMINI_API_KEY tuỳ chọn."
+echo "Key do công ty cấp. Không gửi key cho ai và không commit file .env."
 
 say "Kiểm tra"
 npx -y hyperframes@latest doctor || true

@@ -8,9 +8,11 @@
       "Bash(heygen:*)",
       "Bash(ls:*)",
       "Bash(mkdir:*)",
+      "Bash(node .claude/skills/kite-video/scripts/:*)",
       "Bash(node:*)",
       "Bash(npx -y hyperframes:*)",
       "Bash(npx hyperframes:*)",
+      "Bash(python3 .claude/skills/kite-video/scripts/:*)",
       "Bash(scripts/check.sh)"
     ],
     "deny": [
@@ -18,5 +20,8 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "model": "claude-opus-5-5"
+  "model": "claude-opus-5-5",
+  "enabledMcpjsonServers": [
+    "higgsfield"
+  ]
 }

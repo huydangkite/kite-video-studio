@@ -1,9 +1,9 @@
 # Kite Video Studio
 
 Làm **video marketing** và **video demo tính năng** cho sản phẩm web / mobile bằng cách trò chuyện
-với một **nhà sản xuất** AI. Phía sau nhà sản xuất là một đội 8 chuyên gia: marketer, người viết
-kịch bản, đạo diễn, motion designer, sound designer, kỹ sư video, người duyệt chất lượng… Bạn chỉ
-làm việc với nhà sản xuất.
+với một **nhà sản xuất** AI. Phía sau nhà sản xuất là một đội 4 chuyên gia: người viết (thông
+điệp + kịch bản), đạo diễn, motion designer và kỹ sư video (kiêm âm thanh). Bạn chỉ làm việc với
+nhà sản xuất.
 
 ---
 
@@ -23,8 +23,15 @@ cd kite-video-studio
 ./scripts/setup.sh
 ```
 
-`setup.sh` cài Node, ffmpeg, bộ kỹ năng HyperFrames, trình duyệt dùng để dựng, và HeyGen CLI (giọng
-đọc + nhạc nền). Khi trình duyệt mở trang đăng nhập HeyGen, đăng nhập bằng email công ty.
+`setup.sh` cài Node, ffmpeg, Python numpy, bộ kỹ năng HyperFrames và trình duyệt dùng để dựng, rồi
+tạo file `.env`. Mở `.env` và điền key công ty cấp: `ELEVENLABS_API_KEY` (giọng đọc, nhạc nền,
+hiệu ứng âm thanh). `GEMINI_API_KEY` là tuỳ chọn.
+
+Nếu cần người AI trong video (người dẫn, người dùng sản phẩm): cần tài khoản **Higgsfield**. Mở
+studio, gõ `/mcp`, chọn `higgsfield` → đăng nhập một lần.
+
+Không có key hay tài khoản nào ở trên cũng không sao: nhà sản xuất sẽ soạn sẵn prompt và thông số,
+bạn tạo bằng công cụ bạn quen (Veo, Grok, Kling, ElevenLabs web…) rồi gửi file lại.
 
 Kiểm tra lại bất cứ lúc nào: `./scripts/check.sh`
 
@@ -52,7 +59,7 @@ Rồi nói bạn cần gì:
 | **2. Kịch bản** | Chờ vài phút. | Người viết kịch bản viết lời đọc và chữ trên màn hình. Đạo diễn chia cảnh, chọn chuyển động. |
 | **3. Trao đổi** | Duyệt hoặc xin sửa kịch bản. Nghe 2 giọng mẫu, chọn một. | Nhà sản xuất sửa theo ý bạn tới khi bạn duyệt. |
 | **4. Bản giao việc** | Không cần làm gì. | Đạo diễn viết `PROMPT.md`: bản giao việc đầy đủ cho đội sản xuất. Bạn giữ lại để làm lại hoặc chia sẻ. |
-| **5. Sản xuất** | (Tuỳ chọn) duyệt bản phác từng cảnh. Nhận video. | Thu giọng trước, dựng từng cảnh song song, người duyệt chấm điểm, sửa tới khi đạt 8/10, xuất mọi khổ hình. |
+| **5. Sản xuất** | (Tuỳ chọn) duyệt bản phác từng cảnh. Nhận video. | Thu giọng và dựng khung song song, dựng từng chương song song, gửi bạn bản nháp; bạn xem và yêu cầu sửa tới khi ok, rồi xuất mọi khổ hình. |
 
 Video nằm trong `videos/<ngày>-<tên>/final/`.
 
@@ -87,8 +94,9 @@ là bắt đầu được.
 
 ## 5. Câu hỏi thường gặp
 
-**Có tốn tiền không?** Giọng đọc và nhạc dùng hạn mức miễn phí hằng tháng của HeyGen (khoảng 10
-phút giọng đọc). Nhà sản xuất sẽ hỏi trước khi dùng thứ gì tính phí.
+**Có tốn tiền không?** Có, một ít: giọng đọc, nhạc nền và hiệu ứng âm thanh (ElevenLabs) tính theo
+lượng dùng trên tài khoản công ty. Trước khi tạo âm thanh, nhà sản xuất báo ước tính (bao
+nhiêu giây giọng, giây nhạc, số hiệu ứng) và chờ bạn đồng ý.
 
 **Mất bao lâu?** Khai thác và kịch bản khoảng 10–15 phút trò chuyện. Sản xuất một video 30 giây
 có thể mất 30–60 phút máy chạy (ước tính). Trong lúc đó bạn làm việc khác được.
@@ -111,7 +119,7 @@ Lần sau chỉ cần nói *"làm video giống công thức demo tính năng"*.
 | `CLAUDE.md` | Vai nhà sản xuất, bảng phân vai đội, luồng 5 bước, chuẩn chất lượng |
 | `.claude/skills/kite-video/SKILL.md` | Kịch bản làm việc của nhà sản xuất, từng bước và điều kiện chuyển bước |
 | `.claude/skills/kite-video/references/` | Câu hỏi khai thác, danh sách tài nguyên, mẫu bản giao việc, quy tắc chuyển động, cách chấm điểm, thư viện câu lệnh, mẫu phim "biến hình UI" |
-| `.claude/agents/` | 8 chuyên gia: marketer, product-educator, scriptwriter, director, motion-designer, sound-designer, video-engineer, qa |
+| `.claude/agents/` | 4 chuyên gia: writer, director, motion-designer, video-engineer |
 | `brand/` | Bộ nhận diện. **Đội thiết kế cần điền `brand/brand.md` và thêm logo trước khi phát hành.** |
 
 Phần thiết kế cảnh, giọng, nhạc và dựng dùng bộ kỹ năng HyperFrames. Studio thêm lớp của công ty:

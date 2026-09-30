@@ -13,8 +13,10 @@ Copy into `videos/<slug>/INTAKE.md` and fill in. Keep the colleague's own wordin
 - Length: <n>s
 - Language / voice: vi | en — <gender, tone> | no voice-over
 - Music: <mood> | none
-- Look: house style | reference <file/link> → style_guide.md
+- Look: base style `<catalog name>` (+ guests `<name>` for <chapter>) | reference <file/link>
+  → style_guide.md · style colours: yes/no · style display face: yes/no
 - Review mode: storyboard first | straight to video
+- Generation: voice api|manual · music api|manual · sfx api|manual · ai-people api|manual|none
 - Requested by: <name>, <date>
 
 ## Resources

@@ -25,9 +25,15 @@ this line.
 - Message (approved): "…"
 - CTA (exact text + destination): "…"
 
-## 4. References & look
-- Style guide: videos/<slug>/style_guide.md (take: …; do NOT take: subject, brand, copy)
-- Look in 3–5 lines: palette mood, type personality, texture, camera language.
+## 4. Look & styles
+- Base style: `<catalog name>` · Guests: `<name>` (chapter: …), or none · Style colours / display
+  face opted in: yes | no
+- Style map: beats 1–2 `<guest>` · 3–8 `<base>` · 9–10 `<guest>`. Switches on hard cuts at voice
+  pauses; constants: logo, accent, UI face, captions, voice, music.
+- Deep spec per style, copied in full from style_guide.md with tokens resolved (tokens, fonts with
+  Vietnamese subset confirmed, layers, components, motion language, signature move, transitions,
+  captions, never-list).
+- Reference (if any): inputs/<ref> → take: …; do NOT take: subject, brand, copy.
 - Banned: <the studio list from motion-rules.md> + <anything this colleague rejected>.
 
 ## 5. Brand bible
@@ -41,28 +47,39 @@ this line.
 |---|---|---|
 | inputs/flow.mov | web recording, 1920×1080, 52s | 3–6 |
 
+AI people (if any, `references/ai-people.md`): character id, presenter lines / scene clips per
+beat, screen replacement plan. Customer roles are dramatised scenarios; no fake testimonials.
+
 ## 7. Beat sheet (approved)
-| # | Time | On screen (real resource) | Motion (tier, blueprint) | Voice-over (verbatim) | On-screen text (huge/subtitle) | Sound |
-|---|---|---|---|---|---|---|
-| 1 | 0–2.5s | … | Heavy, kinetic-type-beats | "…" | HUGE: "…" | whoosh in |
+| # | Time | Style | On screen (real resource) | Motion (tier, blueprint, word anchor) | Transition in | Voice-over (verbatim) | On-screen text (huge/subtitle) | Sound |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 0–2.5s | athletic-impact | … | Heavy, kinetic-type-beats, slab on "…" | cut | "…" | HUGE: "…" | hit on drop |
 
 ## 8. Must stay exact
 Product names, numbers, UI labels, legal lines, CTA — never paraphrased or restyled.
 
 ## 9. Sound
-Voice: <provider, voice id, language> — verbatim lines above. Music: <mood / track id>, ducked under
-voice. SFX: <list per beat>. Loudness: −14 LUFS social / −16 web.
+Voice: ElevenLabs <model, voice id, settings, language, tempo> — verbatim lines above, `say`
+pronunciations: <list>.
+Music: ElevenLabs composition plan <genre, BPM, sections>, arrangement (drops at beats …, silent stop before …) or "as is".
+Balance: music ~5 dB under the voice while speaking. SFX: <list per beat, anchored to words or
+beats>. Loudness: −14 LUFS social / −16 web, true peak ≤ −1.5 dBTP; remux the mix after render.
 
 ## 10. Tools & budget
 Skills: hyperframes (+ the route), hyperframes-animation, media-use, hyperframes-audio.
-Paid calls allowed: <none | voice up to N minutes>. Everything else: free/local.
+Scripts: .claude/skills/kite-video/scripts/ (elevenlabs.mjs, fit-beat-grid.py, arrange-music.mjs,
+verify-arrangement.py, measure-mix-balance.py).
+Generation (from INTAKE.md): voice … · music … · sfx … · ai-people … — manual assets come from
+ORDERS.md; never call a provider for them.
+Paid calls approved by the colleague: ElevenLabs voice ≈ <N> s, ElevenLabs music ≈ <N> s, SFX <N>
+sounds, alignment <N> lines. Everything else: free/local.
 
 ## 11. Workflow gates (do not skip)
-audio + timing → setup → [storyboard → colleague OK] → build per beat → check → critique loop
-(≤3 rounds, all 8+) → formats → final.
+audio ∥ setup → [storyboard → colleague OK] → build per chapter → check → draft → colleague
+review (by hand, until ok) → formats → technical gate → final.
 
-## 12. Critique rubric
-Use references/critique.md axes. Specific watch-list for this video: <e.g. "phone readability of
+## 12. Review watch-list
+Checked before showing a draft (references/review.md). Specific to this video: <e.g. "phone readability of
 the table in beat 4", "the logo must not animate">.
 
 ## 13. Deliverables
@@ -78,6 +95,8 @@ known limitations, what we'd improve next).
 - [ ] Every beat names a real resource or is explicitly design-only.
 - [ ] Voice-over lines are the approved words, verbatim.
 - [ ] Every motion names a tier and a blueprint/rule; nothing from the banned list.
+- [ ] Every beat names a style; guests own whole chapters; no neighbouring beats share a transition.
+- [ ] Each style used has its full deep spec in §4; every font has the Vietnamese subset.
 - [ ] Text size decided per beat (huge vs subtitle), not uniform.
 - [ ] Formats listed with the primary first.
 - [ ] Anything the colleague said "no" to appears under Banned.

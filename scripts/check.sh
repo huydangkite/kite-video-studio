@@ -25,12 +25,15 @@ else
   bad "HyperFrames skills" "chưa cài (chạy scripts/setup.sh)"
 fi
 
-if command -v heygen >/dev/null 2>&1; then
-  ok "HeyGen CLI (giọng đọc, nhạc)"
-elif [ -f .env ] && grep -q '^ELEVENLABS_API_KEY=.\+' .env; then
-  warn "HeyGen CLI" "chưa cài — sẽ dùng ElevenLabs trong .env cho giọng đọc; nhạc nền cần HeyGen"
+if command -v python3 >/dev/null 2>&1 && python3 -c 'import numpy' >/dev/null 2>&1; then
+  ok "Python + numpy (căn nhạc theo beat)"
 else
-  warn "HeyGen CLI" "chưa cài — chưa tạo được giọng đọc và nhạc nền (chạy scripts/setup.sh)"
+  warn "Python numpy" "chưa có — không căn được điểm drop của nhạc (chạy scripts/setup.sh)"
 fi
+
+has_key() { [ -n "${!1:-}" ] || { [ -f .env ] && grep -q "^$1=.\+" .env; }; }
+has_key ELEVENLABS_API_KEY && ok "ElevenLabs key (giọng đọc, nhạc, hiệu ứng)" \
+  || warn "ElevenLabs key" "chưa có trong .env — chưa tạo được giọng đọc, nhạc nền và hiệu ứng"
+has_key GEMINI_API_KEY     && ok "Gemini key (tuỳ chọn)" || true
 
 exit $fail
