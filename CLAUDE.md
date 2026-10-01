@@ -72,5 +72,8 @@ Every gate is recorded with who approved what. Never build the finished video wh
 
 ## Effort
 
-`./studio` opens Opus 5.5 at xhigh. Suggest `/effort max` when the first seconds must carry a
-launch, `/effort medium` for small fixes and re-renders.
+Required: **Opus 5.5 at effort medium or higher.** `./studio` opens Opus 5.5 at high by default
+(`./studio medium|high|xhigh|max` to choose). Any level from medium up is fine; suggest `xhigh` or
+`max` when the first seconds must carry a launch, `medium` for small fixes and re-renders. If the
+session is not on Opus 5.5 (or was set below medium), tell the colleague to restart with `./studio`
+before producing anything.

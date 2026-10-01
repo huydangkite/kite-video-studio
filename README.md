@@ -43,7 +43,8 @@ trình duyệt riêng) hay Remotion (một bộ dựng là đủ).
 
 ```bash
 cd kite-video-studio
-./studio        # mở Claude Opus 5.5 ở mức nỗ lực rất cao (xhigh)
+./studio        # mở Claude Opus 5.5, mức nỗ lực high (mặc định)
+# hoặc chọn mức: ./studio medium | ./studio xhigh | ./studio max  (tối thiểu medium)
 ```
 
 Rồi nói bạn cần gì, và **gửi luôn mọi thứ đang có** (link website, ảnh, video quay màn hình, tài liệu):
