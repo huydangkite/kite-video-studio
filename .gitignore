@@ -5,3 +5,4 @@ __pycache__/
 # Colleagues' videos live in their own workspace, never in this repo.
 videos/
 brand/
+.claude/

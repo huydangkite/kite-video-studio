@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Work on videos (or on the studio itself) straight from this repo, without installing the plugin:
+# loads the plugin from source, so the producer agent, crew, skill, commands and hooks are live.
+#   ./studio            -> producer on Opus 5.5, effort high
+#   ./studio xhigh      -> medium | high | xhigh | max (minimum medium)
+cd "$(dirname "$0")" || exit 1
+effort=""
+case "${1:-}" in
+  medium|high|xhigh|max) effort="$1"; shift ;;
+  low|minimal|none) echo "Mức nỗ lực '$1' quá thấp. Studio cần từ medium trở lên."; exit 1 ;;
+esac
+exec claude --plugin-dir "$PWD" ${effort:+--effort "$effort"} "$@"

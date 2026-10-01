@@ -149,6 +149,10 @@ Repo này là **gốc plugin** và đồng thời là **marketplace** (`.claude-
 | `scripts/` | setup, check, hook scripts |
 | `templates/` | `.env` mẫu, `brand.md` mẫu, `.claude/settings.json` cho thư mục làm việc |
 
+**Làm video ngay trong repo (không cần cài plugin):** `./studio` (hoặc `./studio xhigh`) mở Claude với
+plugin nạp thẳng từ mã nguồn, nên sửa file nào trong repo thì phiên sau thấy ngay. Lần đầu gõ
+`/kite-video:setup` để tạo `.env`, `brand/`, `videos/` (đều nằm ngoài git).
+
 Kiểm tra trước khi push: `claude plugin validate . --strict` và
 `python3 -m unittest discover -s skills/kite-video/scripts/tests`. Đổi phiên bản trong
 `plugin.json` mỗi lần phát hành để đồng nghiệp nhận bản mới.
