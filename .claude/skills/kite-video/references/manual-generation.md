@@ -56,9 +56,9 @@ save). Each block has:
 | Voice-over (Vietnamese) | ElevenLabs web · the colleague's own recording | One file per script line, named `audio/vo/<beat>-<n>.mp3`; same voice and settings for every line. Paste the exact line from `script.md`. |
 | Music bed | ElevenLabs Music web · Suno · Udio | Give genre, BPM, length, sections (intro/build/drop/tail), "instrumental, no vocals". |
 | SFX | ElevenLabs SFX web · a licensed library | One file per sound, `audio/sfx/<id>.mp3`. |
-| Person, no speech (scene / customer role) | Veo (Gemini app, Flow) · Grok Imagine · Kling · Higgsfield web | Attach the same character image every time. Turn **off** or discard generated audio. |
-| Person speaking (presenter) | Higgsfield web · HeyGen | The tool must accept **our** voice file (upload audio → lipsync). Veo and Grok generate their own voice: use them only for shots without speech. |
-| Character reference image | Higgsfield Soul · Midjourney · Imagen/Gemini · Grok | Generate once, save as `inputs/ai/character.png`, reuse for every shot. |
+| Person, no speech (scene / customer role), b-roll | **Google Flow** (first choice) · Grok Imagine · Kling · Higgsfield web | Flow runs Veo: use **Ingredients to Video** with the character image for the same face in every shot, **Frames to Video** when the start/end frame must match a layout, **Scenebuilder** to extend a shot. Needs a Google AI Pro/Ultra plan. Discard the audio it generates. |
+| Person speaking (presenter) | Higgsfield web · HeyGen | The tool must accept **our** voice file (upload audio → lipsync). Flow (Veo) and Grok generate their own voice: use them only for shots without speech. |
+| Character reference image | Google Flow / Gemini (Imagen) · Higgsfield Soul · Midjourney · Grok | Generate once, save as `inputs/ai/character.png`, reuse for every shot (in Flow, as an ingredient). |
 
 ## Licensing (say it once, in the order)
 

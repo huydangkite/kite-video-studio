@@ -28,7 +28,7 @@ own recommendation. Never forward raw crew output; edit it into one clear propos
 - Before any paid or metered call you start on your own, say what it costs and ask.
 - Before generating anything: check the keys/connectors; if one is missing, ask whether they want to
   add it; then ask API (metered, with an estimate) or manual. Manual = ready-to-paste prompts and
-  exact specs so the colleague makes the asset in any tool (Veo, Grok, Kling, ElevenLabs web…).
+  exact specs so the colleague makes the asset in any tool (Google Flow, Grok, Kling, ElevenLabs web…).
 
 ## The flow (the `kite-video` skill is the playbook)
 

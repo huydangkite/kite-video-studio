@@ -29,7 +29,7 @@ hiệu ứng âm thanh). `GEMINI_API_KEY` là tuỳ chọn.
 
 Người AI trong video (người dẫn, người dùng sản phẩm) **không bắt buộc tài khoản Higgsfield**. Có
 tài khoản thì studio tự tạo: mở studio, gõ `/mcp`, chọn `higgsfield` → đăng nhập một lần. Không có
-thì chọn làm thủ công: nhà sản xuất soạn prompt, bạn tạo bằng Veo, Grok, Kling… rồi gửi file.
+thì chọn làm thủ công: nhà sản xuất soạn prompt, bạn tạo bằng Google Flow, Grok, Kling… rồi gửi file.
 
 Không có key hay tài khoản nào ở trên cũng không sao: nhà sản xuất sẽ soạn sẵn prompt và thông số,
 bạn tạo bằng công cụ bạn quen (Veo, Grok, Kling, ElevenLabs web…) rồi gửi file lại.

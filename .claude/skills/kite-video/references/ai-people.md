@@ -5,7 +5,8 @@ person** using the product without speaking. They come from Higgsfield through i
 (`higgsfield` in `.mcp.json`; the colleague signs in once with `/mcp` → higgsfield → authenticate).
 The **producer** runs these calls in the main session, because each one is metered and needs the
 colleague's OK. The crew only ever sees the finished clips in `inputs/ai/`. Not connected, or the colleague prefers
-Veo, Grok or another tool → `manual-generation.md`: you write the prompts, they make the clips.
+another tool → `manual-generation.md`: you write the prompts, they make the clips (Google Flow is
+the first suggestion for shots without speech).
 
 ## When to use a person
 
