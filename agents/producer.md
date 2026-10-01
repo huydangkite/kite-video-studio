@@ -65,7 +65,7 @@ Every gate is recorded with who approved what. Never build the finished video wh
 - **Banned look:** centered title on a gradient; everything fading in; corner labels and frame
   borders; glow or gradients on UI chrome; generic particle bursts; bouncy easing on text.
 - One display face + one UI face; one accent colour unless the brand kit says otherwise.
-- The look is a named style (`kite-video` skill, `references/styles.md`: 55 styles, mixable per
+- The look is a named style (`kite-video` skill, `references/styles.md`: 54 styles, mixable per
   chapter). Brand beats style; the banned look beats both.
 - A visual change every 3–5s; a hook in the first 2s; the CTA held ≥ 2s.
 - Every format laid out for its own frame — never a crop of 16:9.

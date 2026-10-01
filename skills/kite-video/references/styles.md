@@ -1,7 +1,7 @@
 # Styles — named looks, and how to mix them per scene
 
 A style is a named visual grammar: ground colours, type treatment, layout, motion signature,
-texture and the blueprints that suit it. The catalog is `style-catalog.md`: 55 studio styles in
+texture and the blueprints that suit it. The catalog is `style-catalog.md`: 54 studio styles in
 8 families plus the 8 HyperFrames built-ins. Two have a deep spec in `styles/` (`glass-keynote`,
 `comic-multiverse`); any other style gets one written from `styles/_template.md` once it is chosen.
 A style gives a video a look nobody else has without a reference video, and lets different chapters
@@ -40,8 +40,7 @@ reference video steers the choice. Filters the director applies, in order:
    *Cinematic* and *Editorial* better.
 4. **Brand fit.** Reject a style whose grounds cannot carry the brand accent at 4.5:1 contrast.
 
-When the brand is young or the colleague wants it plain, one of the three directions uses
-`kite-house`. Colleagues choose faster from pictures than from names, so the styled frames
+Colleagues choose faster from pictures than from names, so the styled frames
 (`review/concepts.html`) are always shown with the concepts.
 
 Once chosen, `motion-designer` (look) writes `style_guide.md`: one deep-spec section per style used

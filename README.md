@@ -142,7 +142,7 @@ Repo này là **gốc plugin** và đồng thời là **marketplace** (`.claude-
 | `settings.json` | `"agent": "producer"`: nhà sản xuất chạy làm phiên chính |
 | `agents/producer.md` | Vai nhà sản xuất, luật studio, chuẩn chất lượng (Opus 5.5, effort high) |
 | `agents/` | Đội: writer, editor, director, motion-designer, video-engineer |
-| `skills/kite-video/` | Playbook (SKILL.md), references (phiếu brief, playbook chuyển động, 55 phong cách, giọng văn, âm thanh, người AI, làm thủ công, mẫu bản giao việc, duyệt), scripts âm thanh + test |
+| `skills/kite-video/` | Playbook (SKILL.md), references (phiếu brief, playbook chuyển động, 54 phong cách, giọng văn, âm thanh, người AI, làm thủ công, mẫu bản giao việc, duyệt), scripts âm thanh + test |
 | `commands/` | `/kite-video:setup`, `/kite-video:check` |
 | `hooks/hooks.json` | Kiểm tra máy khi mở phiên; chặn đọc `.env` |
 | `.mcp.json` | MCP Higgsfield (người AI) |
