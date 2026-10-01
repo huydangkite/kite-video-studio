@@ -26,9 +26,11 @@ three-style film still has one display face and one accent.
 
 ## Choosing (inside the concepts, gate G1)
 
-The colleague never browses this catalog. The `director` picks a style for each of the three
-concepts (`CONCEPTS.md`) and describes it in plain Vietnamese; the colleague chooses a concept,
-and the style comes with it. Filters the director applies, in order:
+The colleague never browses this catalog. The `director` picks a different style for each of the
+three concepts (`CONCEPTS.md`), describes it in plain Vietnamese on a **Phong cách** line, and the
+`motion-designer` renders one styled frame per concept so the colleague sees each look. The
+colleague may take a concept with another concept's style; a style wish from the brief sheet or a
+reference video steers the choice. Filters the director applies, in order:
 
 1. **Kind.** Feature demos use calm or medium styles whose layout keeps real UI large (the
    *Product* and *Technical* families first). High-energy styles are for marketing.
@@ -38,10 +40,9 @@ and the style comes with it. Filters the director applies, in order:
    *Cinematic* and *Editorial* better.
 4. **Brand fit.** Reject a style whose grounds cannot carry the brand accent at 4.5:1 contrast.
 
-No preference → `kite-house`. Colleagues choose faster from pictures than from names: for a
-colleague's first video, or when they hesitate, have `motion-designer` render the 3 shortlisted
-styles as mood boards with the real product screen and brand (HyperFrames' design picker,
-`hyperframes-creative` `references/design-picker.md`) and show them the page.
+When the brand is young or the colleague wants it plain, one of the three directions uses
+`kite-house`. Colleagues choose faster from pictures than from names, so the styled frames
+(`review/concepts.html`) are always shown with the concepts.
 
 Once chosen, `motion-designer` (look) writes `style_guide.md`: one deep-spec section per style used
 (`styles/_template.md`; copy and resolve `styles/glass-keynote.md` or `styles/comic-multiverse.md`

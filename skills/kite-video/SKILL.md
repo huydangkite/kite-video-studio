@@ -62,12 +62,19 @@ Write `INTAKE.md` (`references/intake-template.md`).
 1. `writer` (task: message) → `notes.md`: audience in their words, candidate messages, hooks,
    proof, CTA (or learning goal and steps for a demo).
 2. `director` (task: concepts) → `CONCEPTS.md`: **three** directions, each a different story about
-   the product, each in Vietnamese: the idea in one line, the story spine, the first 2 seconds, the
-   look in plain words (the catalog style stays internal), the signature motion moment, why it fits
-   this viewer. At least one must not look like a typical video of this industry.
-3. Present the three in a few lines each with the director's pick first; one question: "Chọn hướng
-   nào (hoặc ghép)?". Record **G1**.
-4. `motion-designer` (mode: look) writes `style_guide.md` for the chosen direction's style(s).
+   the product, each in Vietnamese: the idea in one line, the story spine, the first 2 seconds, a
+   **Phong cách** line (plain words plus a familiar anchor such as "kiểu keynote Apple"), the
+   signature motion moment, why it fits this viewer. At least one must not look like a typical
+   video of this industry. A style the colleague asked for in the brief sheet, or their reference
+   video, shapes at least one direction.
+3. `motion-designer` (mode: picker) renders **one styled frame per direction**: its first-2-seconds
+   frame with the real product screen, logo and copy → `review/concepts/<A|B|C>.png` and
+   `review/concepts.html`. Show the colleague the page (offer to open it).
+4. Present the three in a few lines each, **Phong cách** in bold, director's pick first; one
+   question: "Chọn hướng nào? Muốn giữ ý tưởng của hướng này nhưng dùng phong cách của hướng khác
+   thì cứ nói (vd 'ý tưởng B, phong cách A')." Ideas and styles can be swapped or combined; record
+   both in **G1** (`INTAKE.md` → Concept and Look).
+5. `motion-designer` (mode: look) writes `style_guide.md` for the chosen style(s).
 
 ## Phase 3 — Kịch bản & giọng · gate G2
 

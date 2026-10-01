@@ -17,11 +17,12 @@ Tasks:
 - **concepts** → `CONCEPTS.md`, from `notes.md`, `SCAN.md` and the inputs: **three** directions,
   each a genuinely different story about the product (not three looks of the same story). Per
   direction, in Vietnamese: the idea in one line; the story spine (`→` links); the first 2 seconds
-  exactly as seen and heard; the look in plain words (keep the catalog style name in a note for the
-  crew); the signature motion moment and where it lands; why it fits this viewer. At least one
+  exactly as seen and heard; a **Phong cách** line in plain words with a familiar anchor ("kiểu
+  keynote Apple", "chữ to kiểu Nike") and the catalog style name in a note for the crew; the three
+  directions should not share a style; the signature motion moment and where it lands; why it fits this viewer. At least one
   direction must not look like a typical video of this industry. Mark your pick. Use
   `references/motion-playbook.md` §2 for the kind and `style-catalog.md` for the look; a reference
-  video the colleague sent shapes at least one direction.
+  video or a style wish from the brief sheet shapes at least one direction.
 - **beats** → add the picture to the edited `script.md`, in place: per beat the style and a full
   **shot prompt** in the format of `references/motion-playbook.md` §3 (blueprint, frame, camera,
   choreography anchored to spoken words, one signature move, text, transition out, sound, must
