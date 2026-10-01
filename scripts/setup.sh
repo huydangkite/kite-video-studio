@@ -1,19 +1,24 @@
 #!/usr/bin/env bash
-# One-time setup for a colleague's Mac. Safe to run again.
+# One-time setup for a colleague's Mac, run from /kite-video:setup. Safe to run again.
+# Usage: setup.sh <plugin data dir>   (current directory = the colleague's video workspace)
 set -euo pipefail
-cd "$(dirname "$0")/.."
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"          # plugin root
+DATA="${1:-${CLAUDE_PLUGIN_DATA:-$HOME/.kite-video}}"
+WORK="$(pwd)"
 
 say() { printf '\n▶ %s\n' "$1"; }
 
 if [ "$(uname)" != "Darwin" ]; then
-  echo "Script này dành cho macOS. Trên Windows/Linux, làm theo mục 'Cài đặt thủ công' trong README."
+  echo "Bộ cài này dành cho macOS. Trên Windows/Linux: cài Node 22+, ffmpeg, Python 3 rồi chạy lại."
   exit 1
 fi
 
 say "Homebrew"
 if ! command -v brew >/dev/null 2>&1; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)"
+  echo "Máy chưa có Homebrew (cần mật khẩu máy nên phải tự cài). Mở Terminal và chạy:"
+  echo '  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+  echo "Cài xong, gõ lại /kite-video:setup."
+  exit 1
 fi
 
 say "Node 22+ và ffmpeg"
@@ -21,25 +26,30 @@ if ! command -v node >/dev/null 2>&1 || [ "$(node -p 'process.versions.node.spli
   brew install node
 fi
 command -v ffmpeg >/dev/null 2>&1 || brew install ffmpeg
+command -v python3 >/dev/null 2>&1 || brew install python
 
-say "Python numpy (căn nhạc theo beat)"
-python3 -c 'import numpy' 2>/dev/null || python3 -m pip install --user numpy \
+say "Python numpy (căn nhạc theo beat) — môi trường riêng của plugin"
+mkdir -p "$DATA"
+[ -x "$DATA/venv/bin/python" ] || python3 -m venv "$DATA/venv"
+"$DATA/venv/bin/python" -c 'import numpy' 2>/dev/null || "$DATA/venv/bin/python" -m pip install -q numpy \
   || echo "Không cài được numpy — video vẫn làm được, chỉ thiếu bước căn điểm drop của nhạc."
 
-say "HyperFrames skills (cho Claude Code)"
+say "HyperFrames skills và trình duyệt dựng video"
 npx -y hyperframes@latest skills
-
-say "Trình duyệt dùng để dựng video"
 npx -y hyperframes@latest browser ensure
 
-
-say "File cấu hình"
-[ -f .env ] || cp .env.example .env
-echo "Mở file .env và điền ELEVENLABS_API_KEY (giọng đọc, nhạc, hiệu ứng); GEMINI_API_KEY tuỳ chọn."
-echo "Key do công ty cấp. Không gửi key cho ai và không commit file .env."
+say "Thư mục làm việc: $WORK"
+[ -f .env ] || { cp "$ROOT/templates/env.example" .env; echo "Đã tạo .env (điền key vào đây)."; }
+mkdir -p brand videos
+[ -f brand/brand.md ] || { cp "$ROOT/templates/brand.md" brand/brand.md; echo "Đã tạo brand/brand.md mẫu."; }
+if [ ! -f .claude/settings.json ]; then
+  mkdir -p .claude && cp "$ROOT/templates/project-settings.json" .claude/settings.json
+  echo "Đã tạo .claude/settings.json (cho phép ffmpeg, node, hyperframes chạy không cần hỏi)."
+fi
+[ -f .gitignore ] || printf '.env\nvideos/*\n.DS_Store\n' > .gitignore
 
 say "Kiểm tra"
-npx -y hyperframes@latest doctor || true
-./scripts/check.sh
+bash "$ROOT/scripts/check.sh" "$DATA" || true
 echo
-echo "Xong. Gõ:  claude   rồi nói: \"Tôi muốn làm một video …\""
+echo "Xong. Mở .env (open -e .env) và dán key ElevenLabs (hoặc Gemini) nếu có."
+echo "Rồi nói với nhà sản xuất: \"Tôi muốn làm một video …\""

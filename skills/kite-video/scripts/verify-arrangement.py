@@ -1,6 +1,6 @@
 """Check that every bar-spliced segment of the arranged music sits on its target beat.
 
-Usage: python3 .claude/skills/kite-video/scripts/verify-arrangement.py videos/<slug>/audio/music/arrangement.json [--tolerance-ms 2]
+Usage: python3 ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/verify-arrangement.py videos/<slug>/audio/music/arrangement.json [--tolerance-ms 2]
 Reads the arrangement plan (source/output relative to it), decodes the source and the arranged output,
 and cross-correlates 2 s of each segment (1 s after its start, away from the
 crossfade) against the source bars it was copied from. A lag other than ~0 ms

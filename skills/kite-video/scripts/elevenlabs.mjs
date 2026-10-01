@@ -2,12 +2,12 @@
 // The key comes from $ELEVENLABS_API_KEY or the repo's .env; it is never printed or written anywhere.
 //
 // Usage:
-//   node .claude/skills/kite-video/scripts/elevenlabs.mjs music <plan.json> <out.mp3>
+//   node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs music <plan.json> <out.mp3>
 //        plan = ElevenLabs composition plan: positive_global_styles, negative_global_styles,
 //               sections[{ section_name, positive_local_styles, negative_local_styles, duration_ms, lines: [] }]
-//   node .claude/skills/kite-video/scripts/elevenlabs.mjs sfx <sfx.json> <out dir> [--only=id1,id2] [--force]
+//   node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs sfx <sfx.json> <out dir> [--only=id1,id2] [--force]
 //        sfx.json = [{ id, prompt, duration }]  ->  <out dir>/<id>.mp3
-//   node .claude/skills/kite-video/scripts/elevenlabs.mjs align <voice.wav> <text or @file.txt> <out.json>
+//   node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs align <voice.wav> <text or @file.txt> <out.json>
 //        -> { words: [[text, start, end], ...] } in seconds from the start of the file
 //   Add --dry to print the request instead of sending it (no key needed).
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -25,7 +25,7 @@ const only = (flags.find((f) => f.startsWith("--only=")) || "").slice(7).split("
 function apiKey() {
   if (process.env.ELEVENLABS_API_KEY) return process.env.ELEVENLABS_API_KEY;
   const repo = resolve(dirname(fileURLToPath(import.meta.url)), "../../../..");
-  for (const dir of [process.cwd(), repo]) {
+  for (const dir of [process.env.CLAUDE_PROJECT_DIR, process.cwd(), repo].filter(Boolean)) {
     const env = join(dir, ".env");
     if (!existsSync(env)) continue;
     const m = readFileSync(env, "utf8").match(/^ELEVENLABS_API_KEY=(.+)$/m);

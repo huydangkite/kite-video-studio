@@ -1,7 +1,7 @@
 // Re-arranges a music track on its own beat grid so its drops land where the video needs them.
 // Whole bars are copied from the source track to target beats (audio/music/arrangement.json) and
 // joined with short crossfades that finish on each downbeat.
-// Usage: node .claude/skills/kite-video/scripts/arrange-music.mjs videos/<slug>/audio/music/arrangement.json
+// Usage: node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/arrange-music.mjs videos/<slug>/audio/music/arrangement.json
 // `source` and `output` in the plan are relative to the plan file.
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";

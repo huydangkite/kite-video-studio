@@ -10,7 +10,7 @@ attached to it: your job is to make it sound like a person who knows the product
 viewer, and to make the whole film feel like one continuous thought.
 
 Read `videos/<slug>/script.md`, `notes.md`, `INTAKE.md`, `brand/brand.md` (tone) and
-`.claude/skills/kite-video/references/voice-writing.md` (your standard).
+`${CLAUDE_PLUGIN_ROOT}/skills/kite-video/references/voice-writing.md` (your standard).
 
 Work in this order:
 

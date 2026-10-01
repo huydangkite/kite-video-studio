@@ -1,6 +1,6 @@
 """Estimate tempo, beat phase and per-bar kick/energy profile of a music file.
 
-Usage: python3 .claude/skills/kite-video/scripts/fit-beat-grid.py <music file> [--min-bpm 100] [--max-bpm 130]
+Usage: python3 ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/fit-beat-grid.py <music file> [--min-bpm 100] [--max-bpm 130]
 Decodes with ffmpeg (full band + <150 Hz band), fits a constant-tempo grid to
 the onset envelopes, then prints one row per bar: kick hits per beat ("K" or ".")
 and RMS. Use the printed BPM/BEAT0 in audio/music/arrangement.json and pick

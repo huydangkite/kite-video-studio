@@ -2,7 +2,7 @@
 
 Provider: **ElevenLabs** for voice, music, sound effects and word alignment (Gemini TTS as the
 alternative for directed delivery). Voice goes through `media-use`; music, SFX and alignment through
-`.claude/skills/kite-video/scripts/elevenlabs.mjs` (`music` | `sfx` | `align`). Keys:
+`${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs` (`music` | `sfx` | `align`). Keys:
 `ELEVENLABS_API_KEY` (required) and `GEMINI_API_KEY` (optional) in `.env`; never printed. Mix with `hyperframes-audio`.
 Do not download music from random sites. No ElevenLabs key → the colleague makes the voice, music
 and SFX from your orders (`manual-generation.md`); the rest of this file still applies. All of these are metered: the producer states the expected
@@ -37,7 +37,7 @@ usage before the first paid call of a video.
   (shown in captions, matched for timing) and `say` (sent to TTS), e.g. "v3.34" / "phiên bản ba
   chấm ba mươi tư".
 - **Word timings are the clock.** The TTS route gives no word timestamps, so align every line
-  against its text: `node .claude/skills/kite-video/scripts/elevenlabs.mjs align <line.wav> "<text>" <out.json>`
+  against its text: `node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs align <line.wav> "<text>" <out.json>`
   (fallback: `npx hyperframes transcribe`). Store them in `audio/timing.json`, per beat:
   `"words": [["text", start, end], …]` with times in the film's timeline, lower-cased and without
   punctuation. Visuals are choreographed to words ("the chip appears on *đồng bộ*"), not to "0.8s
@@ -56,14 +56,14 @@ usage before the first paid call of a video.
   `section` per chapter (`section_name`, `positive_local_styles` with its intent — intro, build,
   drop, groove, breakdown, tail —, `negative_local_styles`, `duration_ms`, `lines: []`). Ask for
   "one beat of total silence at the very end" of a build if a shout line sits before the drop.
-  `node .claude/skills/kite-video/scripts/elevenlabs.mjs music audio/music/plan.json audio/music/source.mp3`
+  `node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs music audio/music/plan.json audio/music/source.mp3`
 - ElevenLabs does **not** honour section lengths exactly: expect the drops in the wrong places and
   fix them with the arrangement step below, not by re-rolling. Keep the previous `source.mp3`
   before regenerating so you can compare. A calm ending can be a separate short composition faded
   in under the main track's tail.
 - Fallback without an ElevenLabs key: Lyria through `media-use` (`bgm.mode: generate`, Gemini key).
 - **Beat grid:** `npx hyperframes beats` or
-  `python3 .claude/skills/kite-video/scripts/fit-beat-grid.py <music> [--min-bpm N --max-bpm N]`,
+  `"${CLAUDE_PLUGIN_DATA}/venv/bin/python" ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/fit-beat-grid.py <music> [--min-bpm N --max-bpm N]`,
   which prints BPM, BEAT0 and one row per bar with kick marks and energy, so you can see the track's
   own intro, builds, drops and breakdowns.
 - **Arrange the drops (marketing, when the script has a big moment):** a catalog track rarely has
@@ -72,8 +72,8 @@ usage before the first paid call of a video.
   `audio/music/arrangement.json` (`source`, `output`, `bpm`, `beat0`, `crossfade` 0.025,
   `fadeOut {beat, seconds}`, `segments [{to: [a, b], from, role}]`), then:
   ```bash
-  node .claude/skills/kite-video/scripts/arrange-music.mjs videos/<slug>/audio/music/arrangement.json
-  python3 .claude/skills/kite-video/scripts/verify-arrangement.py videos/<slug>/audio/music/arrangement.json
+  node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/arrange-music.mjs videos/<slug>/audio/music/arrangement.json
+  "${CLAUDE_PLUGIN_DATA}/venv/bin/python" ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/verify-arrangement.py videos/<slug>/audio/music/arrangement.json
   ```
   Every segment must verify within ±2 ms. The first segment must start at 0s (otherwise the mixer
   re-bases the stream and everything shifts). A gap between segments is a **silent stop**: the
@@ -84,14 +84,14 @@ usage before the first paid call of a video.
   release 350 ms. Voice lines normalised to −16 LUFS each, peaks ≤ −1 dBFS.
 - **Measure, don't trust laptop speakers:** render the voice bus and the ducked music bus as stems
   and run
-  `python3 .claude/skills/kite-video/scripts/measure-mix-balance.py --voice <stem> --music <stem>`.
+  `"${CLAUDE_PLUGIN_DATA}/venv/bin/python" ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/measure-mix-balance.py --voice <stem> --music <stem>`.
 - Final mix: −14 LUFS for social, −16 for web, true peak ≤ −1.5 dBTP (two-pass loudnorm).
 
 ## Sound effects
 
 - Sparse: UI clicks/taps on demo steps, a whoosh on big transitions, a soft hit on the logo.
 - **ElevenLabs SFX** from `audio/sfx/list.json` (`[{id, prompt, duration}]`, prompt influence 0.6):
-  `node .claude/skills/kite-video/scripts/elevenlabs.mjs sfx audio/sfx/list.json audio/sfx`.
+  `node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs sfx audio/sfx/list.json audio/sfx`.
   Describe the sound concretely ("crisp soft UI click tap, modern app interface", 0.5s). Generate
   each once and reuse it across cues.
 - Place cues by anchor: a spoken word (preferred), a music beat, or seconds after a cut. Never

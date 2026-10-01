@@ -7,45 +7,56 @@ nhà sản xuất.
 
 ---
 
-## 1. Cài đặt (một lần, khoảng 10 phút)
+## 1. Cài đặt (một lần, khoảng 15 phút)
 
-Cần: máy Mac, tài khoản Claude của công ty.
+Kite Video Studio là một **plugin của Claude Code**. Cần: máy Mac, tài khoản Claude của công ty,
+và tài khoản GitHub đã được mời vào repo `huydangkite/kite-video-studio` (repo riêng tư).
 
 ```bash
-# 1. Cài Claude Code (nếu chưa có)
+# 1. Cài Claude Code (nếu chưa có), rồi gõ `claude` một lần để đăng nhập
 curl -fsSL https://claude.ai/install.sh | bash
 
-# 2. Lấy studio về
-git clone https://github.com/huydangkite/kite-video-studio.git
-cd kite-video-studio
+# 2. Tạo thư mục làm video (đặt ở đâu cũng được)
+mkdir -p ~/Documents/Kite-Video && cd ~/Documents/Kite-Video
 
-# 3. Cài công cụ dựng video, giọng đọc, nhạc
-./scripts/setup.sh
+# 3. Thêm kho plugin của Kite và cài studio vào thư mục này
+claude plugin marketplace add huydangkite/kite-video-studio
+claude plugin install kite-video@kite-video-studio --scope project
+
+# 4. Mở Claude trong thư mục này và gõ lệnh cài công cụ
+claude
+/kite-video:setup
 ```
 
-`setup.sh` cài Node, ffmpeg, Python numpy, bộ kỹ năng HyperFrames và trình duyệt dùng để dựng, rồi
-tạo file `.env`. Mở `.env` và điền key công ty cấp: `ELEVENLABS_API_KEY` (giọng đọc, nhạc nền,
-hiệu ứng âm thanh). `GEMINI_API_KEY` là tuỳ chọn.
+`/kite-video:setup` cài Node, ffmpeg, Python numpy (trong môi trường riêng của plugin), bộ kỹ năng
+HyperFrames và trình duyệt dùng để dựng; rồi tạo trong thư mục làm việc: `.env` (chỗ điền key),
+`brand/brand.md` mẫu và thư mục `videos/`. Nếu máy chưa có Homebrew, lệnh sẽ đưa đúng một dòng để
+bạn tự chạy trong Terminal (cần mật khẩu máy).
 
-Người AI trong video (người dẫn, người dùng sản phẩm) **không bắt buộc tài khoản Higgsfield**. Có
-tài khoản thì studio tự tạo: mở studio, gõ `/mcp`, chọn `higgsfield` → đăng nhập một lần. Không có
-thì chọn làm thủ công: nhà sản xuất soạn prompt, bạn tạo bằng Google Flow, Grok, Kling… rồi gửi file.
+Cài theo `--scope project` thì nhà sản xuất **chỉ xuất hiện trong thư mục làm video**; mở Claude ở
+thư mục khác vẫn là Claude bình thường.
 
-Không có key hay tài khoản nào ở trên cũng không sao: nhà sản xuất sẽ soạn sẵn prompt và thông số,
-bạn tạo bằng công cụ bạn quen (Veo, Grok, Kling, ElevenLabs web…) rồi gửi file lại.
+**Key:** mở `.env` (`open -e .env`), dán `ELEVENLABS_API_KEY` (giọng đọc, nhạc, hiệu ứng);
+`GEMINI_API_KEY` tuỳ chọn. Claude không bao giờ đọc file này (có hook chặn).
 
-Kiểm tra lại bất cứ lúc nào: `./scripts/check.sh`
+**Người AI** không bắt buộc tài khoản Higgsfield. Có tài khoản thì gõ `/mcp` → higgsfield →
+Authenticate. Không có key hay tài khoản nào cũng không sao: nhà sản xuất soạn sẵn prompt và thông
+số, bạn tạo bằng công cụ quen tay (Google Flow, Grok, Kling, ElevenLabs web…) rồi gửi file.
 
-**Không cần cài thêm** Python/librosa (HyperFrames tự bắt nhịp nhạc), Playwright (HyperFrames có
-trình duyệt riêng) hay Remotion (một bộ dựng là đủ).
+Kiểm tra máy bất cứ lúc nào: `/kite-video:check`. Mỗi lần mở Claude, studio cũng tự kiểm tra và
+báo nếu thiếu gì.
+
+**Cập nhật studio:** `claude plugin update kite-video@kite-video-studio` (hoặc bật tự cập nhật trong
+`/plugin` → Marketplaces), rồi `npx hyperframes@latest skills update`.
 
 ## 2. Làm video
 
 ```bash
-cd kite-video-studio
-./studio        # mở Claude Opus 5.5, mức nỗ lực high (mặc định)
-# hoặc chọn mức: ./studio medium | ./studio xhigh | ./studio max  (tối thiểu medium)
+cd ~/Documents/Kite-Video
+claude          # nhà sản xuất chạy Claude Opus 5.5, mức nỗ lực high (mặc định)
 ```
+
+Đổi mức nỗ lực trong phiên bằng `/effort medium | high | xhigh | max` (tối thiểu medium).
 
 Rồi nói bạn cần gì, và **gửi luôn mọi thứ đang có** (link website, ảnh, video quay màn hình, tài liệu):
 
@@ -115,23 +126,35 @@ nhiêu giây giọng, giây nhạc, số hiệu ứng) và chờ bạn đồng �
 **Làm lại video tương tự?** Sau mỗi video được duyệt, nhà sản xuất đề nghị lưu thành "công thức".
 Lần sau chỉ cần nói *"làm video giống công thức demo tính năng"*.
 
-**Máy báo thiếu công cụ hoặc dựng lỗi?** Chạy `./scripts/check.sh` rồi làm theo dòng ❌.
+**Máy báo thiếu công cụ hoặc dựng lỗi?** Gõ `/kite-video:check` rồi làm theo dòng ❌.
 
-**Cập nhật studio?** `git pull` rồi `npx hyperframes@latest skills update`.
+**Cập nhật studio?** `claude plugin update kite-video@kite-video-studio` rồi `npx hyperframes@latest skills update`.
 
 ---
 
 ## Dành cho người quản lý studio
 
+Repo này là **gốc plugin** và đồng thời là **marketplace** (`.claude-plugin/`).
+
 | File | Là gì |
 |---|---|
-| `CLAUDE.md` | Vai nhà sản xuất, bảng phân vai đội, luồng 7 bước và 5 mốc duyệt, chuẩn chất lượng |
-| `.claude/skills/kite-video/SKILL.md` | Kịch bản làm việc của nhà sản xuất, từng bước và điều kiện chuyển bước |
-| `.claude/skills/kite-video/references/` | Phiếu brief, danh sách tài nguyên, playbook chuyển động theo loại video, 55 phong cách, giọng văn, âm thanh, người AI, làm thủ công, mẫu bản giao việc, cách duyệt |
-| `.claude/agents/` | 5 chuyên gia: writer, editor, director, motion-designer, video-engineer |
-| `brand/` | Bộ nhận diện. **Đội thiết kế cần điền `brand/brand.md` và thêm logo trước khi phát hành.** |
+| `.claude-plugin/plugin.json`, `marketplace.json` | Khai báo plugin `kite-video` và kho `kite-video-studio` |
+| `settings.json` | `"agent": "producer"`: nhà sản xuất chạy làm phiên chính |
+| `agents/producer.md` | Vai nhà sản xuất, luật studio, chuẩn chất lượng (Opus 5.5, effort high) |
+| `agents/` | Đội: writer, editor, director, motion-designer, video-engineer |
+| `skills/kite-video/` | Playbook (SKILL.md), references (phiếu brief, playbook chuyển động, 55 phong cách, giọng văn, âm thanh, người AI, làm thủ công, mẫu bản giao việc, duyệt), scripts âm thanh + test |
+| `commands/` | `/kite-video:setup`, `/kite-video:check` |
+| `hooks/hooks.json` | Kiểm tra máy khi mở phiên; chặn đọc `.env` |
+| `.mcp.json` | MCP Higgsfield (người AI) |
+| `scripts/` | setup, check, hook scripts |
+| `templates/` | `.env` mẫu, `brand.md` mẫu, `.claude/settings.json` cho thư mục làm việc |
+
+Kiểm tra trước khi push: `claude plugin validate . --strict` và
+`python3 -m unittest discover -s skills/kite-video/scripts/tests`. Đổi phiên bản trong
+`plugin.json` mỗi lần phát hành để đồng nghiệp nhận bản mới.
+
+**Đội thiết kế cần điền `brand/brand.md` và thêm logo** trong thư mục làm việc (mẫu ở
+`templates/brand.md`).
 
 Phần thiết kế cảnh, giọng, nhạc và dựng dùng bộ kỹ năng HyperFrames. Studio thêm lớp của công ty:
-vai trò, luồng làm việc và chuẩn chất lượng. Các kỹ thuật lấy từ khoá học "How to build motion
-design studio with Opus 5.5" (@0xMovez): bản giao việc của đạo diễn, phong cách tham khảo, chuyển
-động có quán tính, nhiều khổ hình từ một bản dựng.
+vai trò, luồng làm việc và chuẩn chất lượng.

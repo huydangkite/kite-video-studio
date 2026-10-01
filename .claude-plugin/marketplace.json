@@ -1,0 +1,15 @@
+{
+  "name": "kite-video-studio",
+  "owner": {
+    "name": "Kite",
+    "email": "huydang@vietkite.com"
+  },
+  "description": "Kite's internal plugins: Kite Video Studio.",
+  "plugins": [
+    {
+      "name": "kite-video",
+      "source": "./",
+      "description": "Kite Video Studio: AI producer and crew for product videos, built with HyperFrames."
+    }
+  ]
+}

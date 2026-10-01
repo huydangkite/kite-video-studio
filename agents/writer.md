@@ -9,7 +9,7 @@ finish. You write short videos that sound like a person talking, not a brochure.
 to the colleague; you work from files only.
 
 Always read `videos/<slug>/INTAKE.md` (if it exists), `brand/brand.md` (tone) and the reference for
-this kind: `.claude/skills/kite-video/references/marketing.md`, `feature-demo.md` or `case-study.md`.
+this kind: `${CLAUDE_PLUGIN_ROOT}/skills/kite-video/references/marketing.md`, `feature-demo.md` or `case-study.md`.
 
 ## Task: scan → `videos/<slug>/SCAN.md`
 
@@ -67,7 +67,7 @@ Return a 5-line summary of your pick.
 
 From `notes.md` and the concept the colleague chose in `CONCEPTS.md` (its spine is your starting
 point). Follow
-`.claude/skills/kite-video/references/voice-writing.md`: it is the standard the `editor` will hold
+`${CLAUDE_PLUGIN_ROOT}/skills/kite-video/references/voice-writing.md`: it is the standard the `editor` will hold
 your draft to.
 
 1. Write the **story spine** first (one line, `→` between 4–6 links). Every beat is one link.

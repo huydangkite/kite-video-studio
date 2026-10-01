@@ -1,6 +1,7 @@
 .env
 node_modules/
 .DS_Store
-# Each colleague's videos stay on their machine.
-videos/*
-!videos/README.md
+__pycache__/
+# Colleagues' videos live in their own workspace, never in this repo.
+videos/
+brand/

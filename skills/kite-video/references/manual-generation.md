@@ -12,7 +12,7 @@ Everything after that is the same pipeline: the files become resources like any 
 - Voice: ready with **either** key — ElevenLabs (default) or Gemini (Gemini TTS).
 - Music: ElevenLabs Music; with only a Gemini key, Lyria through `media-use`.
 - SFX and word alignment: ElevenLabs only (alignment falls back to local `npx hyperframes transcribe`).
-- Keys: the ElevenLabs and Gemini lines of `scripts/check.sh`.
+- Keys: the ElevenLabs and Gemini lines of `${CLAUDE_PLUGIN_ROOT}/scripts/check.sh`.
 - AI people (only if the video will use them): `claude mcp list` shows `higgsfield` connected.
 
 **(a) Missing key — one line in the brief sheet,** only if something this video needs is missing. With neither key, e.g.:

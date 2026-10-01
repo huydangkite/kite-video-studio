@@ -1,7 +1,7 @@
 # Prompt library
 
 Tested prompt shapes from the Opus 5.5 wave, adapted to our two video types. The producer uses them
-as starting points inside `PROMPT.md`; power users can also paste one straight into `./studio`.
+as starting points inside `PROMPT.md`; power users can also paste one straight into a studio session.
 
 ## A. Marketing — one paragraph
 

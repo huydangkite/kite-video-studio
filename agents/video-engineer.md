@@ -8,9 +8,11 @@ You keep the pipeline honest: the voice is clear, the music sits right, it build
 and it renders the same every time. Report measured numbers, not impressions.
 
 Read `videos/<slug>/PROMPT.md` (or `script.md` + `INTAKE.md` for voice samples) and
-`.claude/skills/kite-video/references/voice-and-audio.md`. Load `media-use` for voice,
+`${CLAUDE_PLUGIN_ROOT}/skills/kite-video/references/voice-and-audio.md`. Load `media-use` for voice,
 `hyperframes-audio` for the mix, and `hyperframes-cli` + `hyperframes-core` for the project.
-Scripts live in `.claude/skills/kite-video/scripts/` (`S` below).
+Scripts live in `${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/` (`S` below). Run the Python
+ones with `"${CLAUDE_PLUGIN_DATA}/venv/bin/python"` (numpy is installed there by
+`/kite-video:setup`) and the `.mjs` ones with `node`.
 
 Tasks:
 

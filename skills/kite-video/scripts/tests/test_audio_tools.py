@@ -1,6 +1,6 @@
 """Regression tests for the beat-grid and arrangement checkers on synthetic audio.
 
-Run: python3 -m unittest discover -s .claude/skills/kite-video/scripts/tests   (needs ffmpeg, numpy)
+Run: python3 -m unittest discover -s ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/tests   (needs ffmpeg, numpy)
 """
 import json
 import re

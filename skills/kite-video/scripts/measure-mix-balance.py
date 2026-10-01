@@ -1,6 +1,6 @@
 """Measure how loud the ducked music sits under the voice-over and in the gaps.
 
-Usage: python3 .claude/skills/kite-video/scripts/measure-mix-balance.py --voice <voice stem> --music <ducked music stem> [--body START END]
+Usage: python3 ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/measure-mix-balance.py --voice <voice stem> --music <ducked music stem> [--body START END]
 Both stems are rendered from the final mix settings (voice bus alone, ducked music bus alone) at the
 same length. Speech windows are found from the voice stem itself (20 ms frames louder than 30 dB
 below its peak, bridged over pauses shorter than 0.25 s). Prints the music level while someone
