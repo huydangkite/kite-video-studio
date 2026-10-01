@@ -31,14 +31,24 @@ glow on UI chrome (the studio's banned look).
 
 ## 0. House
 
-### `kite-house` — the default when nobody picks
-Brand kit as-is, restrained · medium · demo-safe
-- Ground: brand light or dark background, one surface tint of it, ink ≥ 7:1. Sig: brand accent.
-- Type: brand display at 700, sentence case, −1% tracking; UI face for everything else.
-- Layout: real UI large and left or right of a short headline; one focal point per frame.
-- Motion: Default tier, `power3.out` 0.5s. Signature: UI components assemble from the real
-  screenshot. Transitions: hard cut, card-morph, push-in.
-- Texture: none. Avoid: centered title cards; filling empty space with decoration.
+### `kite-house` — Kite blue sky, the default when nobody picks
+Bright, airy, confident; the real product in clear light · medium · demo-safe
+- Ground: bg `#F7FAFC` (white with a hint of Kite blue) · surface `#FFFFFF` · wash `#E6F0F7` ·
+  line `#DCE6EE` · ink `#222222` · muted `#5F6B78`. Accent: Kite blue `#006CAA`; secondary tints from
+  the logo `#4D98C4`, `#A6CBE1` (graphics only, never text). Dark act: bg `#0B1A26`, ink `#F2F6F9`,
+  accent drawn in `#4D98C4`. (Values from the Kite logo and past Kite films; `brand/brand.md` wins.)
+- Type: display [Be Vietnam Pro 800, −2% tracking, sentence case]; UI face = the product's own;
+  small labels in mono caps [JetBrains Mono]. Headlines 2–6 words, flush left.
+- Layout: headline top-left third; the real UI as the hero at 60–75% of the frame on the right,
+  slightly raised on a rising diagonal (cards step up 8–12° left to right); generous margins
+  (≥ 7% of the frame); one large soft `#E6F0F7` plane behind the UI for depth.
+- Motion: Default `power3.out` 0.5s, Heavy for headlines. **Signature: the kite string** — on the
+  spoken word, a 1.5px `#4D98C4` line draws (svg-path-draw, 0.45s) from the headline to the exact UI
+  element it names, then that element lifts 6px with a soft shadow (Snappy). Transitions: rise-cut
+  (the next scene's hero enters 40px from below and settles as the cut lands), card-morph.
+- Texture: none (the wash plane is a flat shape, baked if blurred).
+- Avoid: sky gradients, clouds, literal kites, glow; more than one string per beat; the string over
+  text it does not point to.
 
 ---
 
