@@ -1,11 +1,11 @@
 # PROMPT.md — the production brief
 
-The director writes this after the colleague approves the script. It is the **only** input the
-production crew reads, so it must stand alone: someone with this file, the repo and the files it
-names can make the video without the chat. Viral Opus 5.5 films ran on 9–19k-character briefs; the
-prompt is 10% of the video, the brief is the rest. Aim for complete, not long.
+The director writes this after gate G2 (script and voice approved). It is what the production crew
+builds from. It **references** the approved files by path instead of copying them (copies drift);
+what only the brief holds is written in full, above all the **shot prompt for every beat**. Someone
+with this file, the repo and the files it names can make the video without the chat.
 
-Write it in English (crew language); quote the colleague's approved Vietnamese copy verbatim.
+Write it in English (crew language); Vietnamese copy lives in `script.md` and is never paraphrased.
 
 ```markdown
 # <Video name> — production brief
@@ -15,76 +15,62 @@ Write it in English (crew language); quote the colleague's approved Vietnamese c
 this line.
 
 ## 2. Kind, formats, length
-- Kind: marketing | feature demo — Route: product-launch-video | general-video
-- Formats: primary 9:16, also 1:1 (each its own layout, never cropped)
-- Length: 30s (±10%, set by the measured voice-over)
-- Review mode: storyboard first | straight to final
+- Kind: marketing | feature demo | case study — Route: product-launch-video | general-video
+- Formats: primary 16:9, also 9:16 (each its own layout, never cropped)
+- Length: 60s (±10%, set by the measured voice-over at <N> words/s)
 
-## 3. Audience & message
-- Viewer: …  Action: …
-- Message (approved): "…"
-- CTA (exact text + destination): "…"
+## 3. Source files (approved; read them, do not re-derive)
+- Concept: CONCEPTS.md → direction <A|B|C> (G1, <date>)
+- Script & story spine: script.md (G2, <date>) — voice-over, `say`, on-screen text are verbatim
+- Look: style_guide.md — base style `<name>`, guests `<name>` (chapter …), or none
+- Brand: brand/brand.md · Motion standard: references/motion-playbook.md, motion-rules.md
+- Kind reference: references/marketing.md | feature-demo.md | case-study.md
 
-## 4. Look & styles
-- Base style: `<catalog name>` · Guests: `<name>` (chapter: …), or none · Style colours / display
-  face opted in: yes | no
-- Style map: beats 1–2 `<guest>` · 3–8 `<base>` · 9–10 `<guest>`. Switches on hard cuts at voice
-  pauses; constants: logo, accent, UI face, captions, voice, music.
-- Deep spec per style, copied in full from style_guide.md with tokens resolved (tokens, fonts with
-  Vietnamese subset confirmed, layers, components, motion language, signature move, transitions,
-  captions, never-list).
-- Reference (if any): inputs/<ref> → take: …; do NOT take: subject, brand, copy.
-- Banned: <the studio list from motion-rules.md> + <anything this colleague rejected>.
+## 4. Message & CTA
+- Message: "…" · CTA (exact text + destination): "…"
+- Must stay exact: product names, numbers, UI labels, legal lines, CTA.
+- Banned: the studio list in motion-rules.md + <anything this colleague rejected>.
 
-## 5. Brand bible
-- Logo: brand/logo.svg (never redrawn), inverse: …
-- Colours: primary …, accent … (one accent), backgrounds …
-- Fonts: display …, UI …
-- Tone: …
+## 5. Resources — the build starts only when every row is ✅
+| File | What it is | Beat | Made by | Status |
+|---|---|---|---|---|
+| inputs/flow.mov | web recording, 1920×1080, 52s | 3–6 | colleague | ✅ verified |
+| inputs/ai/03-presenter.mp4 | AI presenter, line 3 | 3 | Higgsfield (api) / colleague (ORDERS.md) | ⏳ waiting |
 
-## 6. Resources (all verified)
-| File | What it is | Use in beat |
-|---|---|---|
-| inputs/flow.mov | web recording, 1920×1080, 52s | 3–6 |
+AI people (if any, references/ai-people.md): character id, clips per beat, screen replacement plan.
 
-AI people (if any, `references/ai-people.md`): character id, presenter lines / scene clips per
-beat, screen replacement plan. Customer roles are dramatised scenarios; no fake testimonials.
+## 6. Chapters & hero beat
+- Chapter 1: beats 1–3 (<name>) · Chapter 2: beats 4–7 · …
+- Hero beat: <n> — built first; every chapter matches its composition language.
 
-## 7. Beat sheet (approved)
-| # | Time | Style | On screen (real resource) | Motion (tier, blueprint, word anchor) | Transition in | Voice-over (verbatim) | On-screen text (huge/subtitle) | Sound |
-|---|---|---|---|---|---|---|---|---|
-| 1 | 0–2.5s | athletic-impact | … | Heavy, kinetic-type-beats, slab on "…" | cut | "…" | HUGE: "…" | hit on drop |
+## 7. Shot prompts (one per beat, format in references/motion-playbook.md §3)
+Beat 1 · 0.0–2.6s · Hook · style …
+Blueprint: … · Frame: … · Camera: … · Choreography (anchored to words): … · Signature move: … ·
+Text: … · Transition out: … · Sound: … · Must not: …
 
-## 8. Must stay exact
-Product names, numbers, UI labels, legal lines, CTA — never paraphrased or restyled.
+Beat 2 · …
 
-## 9. Sound
-Voice: ElevenLabs <model, voice id, settings, language, tempo> — verbatim lines above, `say`
-pronunciations: <list>.
-Music: ElevenLabs composition plan <genre, BPM, sections>, arrangement (drops at beats …, silent stop before …) or "as is".
-Balance: music ~5 dB under the voice while speaking. SFX: <list per beat, anchored to words or
-beats>. Loudness: −14 LUFS social / −16 web, true peak ≤ −1.5 dBTP; remux the mix after render.
+## 8. Sound
+Voice: <provider, model, voice id, settings, measured words/s>; `say` pronunciations: <list>.
+Music: <composition plan or track>, BPM, arrangement (drops at beats …) or "as is".
+Balance: music ~5 dB under the voice while speaking. SFX: per beat, anchored to words or beats.
+Loudness: −14 LUFS social / −16 web, true peak ≤ −1.5 dBTP; remux the mix after render.
 
-## 10. Tools & budget
+## 9. Generation & budget
+Generation: voice … · music … · sfx … · ai-people … — manual assets come from ORDERS.md; never call
+a provider for them. Paid usage approved: <voice ≈ N s, music ≈ N s, SFX N, AI clips N>.
 Skills: hyperframes (+ the route), hyperframes-animation, media-use, hyperframes-audio.
-Scripts: .claude/skills/kite-video/scripts/ (elevenlabs.mjs, fit-beat-grid.py, arrange-music.mjs,
-verify-arrangement.py, measure-mix-balance.py).
-Generation (from INTAKE.md): voice … · music … · sfx … · ai-people … — manual assets come from
-ORDERS.md; never call a provider for them.
-Paid calls approved by the colleague: ElevenLabs voice ≈ <N> s, ElevenLabs music ≈ <N> s, SFX <N>
-sounds, alignment <N> lines. Everything else: free/local.
 
-## 11. Workflow gates (do not skip)
-audio ∥ setup → [storyboard → colleague OK] → build per chapter → check → draft → colleague
-review (by hand, until ok) → formats → technical gate → final.
+## 10. Gates
+G1 concept ✅ · G2 script & voice ✅ · G3 animatic · resource gate (all §5 ✅) · hero beat ·
+chapters · G4 draft (by hand, until ok) · formats · technical gate · G5 final.
 
-## 12. Review watch-list
-Checked before showing a draft (references/review.md). Specific to this video: <e.g. "phone readability of
-the table in beat 4", "the logo must not animate">.
+## 11. Review watch-list
+Checked before the colleague sees a draft (references/review.md). Specific to this video: <e.g.
+"phone readability of the table in beat 4", "the logo must not animate">.
 
-## 13. Deliverables
-final/<slug>-<format>.mp4 per format, poster.png, contact-sheet.png, SUMMARY.md (what is in it,
-known limitations, what we'd improve next).
+## 12. Deliverables
+final/<slug>-<ratio>.mp4 per format, poster.png, contact-sheet.png, SUMMARY.md.
 
 ## Revisions
 - <date>: <what changed, requested by>
@@ -92,11 +78,9 @@ known limitations, what we'd improve next).
 
 ## Director's checklist before handing over
 
-- [ ] Every beat names a real resource or is explicitly design-only.
-- [ ] Voice-over lines are the approved words, verbatim.
-- [ ] Every motion names a tier and a blueprint/rule; nothing from the banned list.
-- [ ] Every beat names a style; guests own whole chapters; no neighbouring beats share a transition.
-- [ ] Each style used has its full deep spec in §4; every font has the Vietnamese subset.
-- [ ] Text size decided per beat (huge vs subtitle), not uniform.
-- [ ] Formats listed with the primary first.
+- [ ] Every beat has a complete shot prompt (all fields, "none" where empty) per motion-playbook §3.
+- [ ] Every beat names a real resource in §5 or is explicitly design-only.
+- [ ] One signature move per beat, one wow moment per chapter, neighbours never share a transition.
+- [ ] The hero beat is the most representative beat of the base style, not the simplest.
+- [ ] Formats listed with the primary first; 9:16 / 1:1 compositions described, not cropped.
 - [ ] Anything the colleague said "no" to appears under Banned.

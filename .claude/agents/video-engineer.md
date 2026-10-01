@@ -1,6 +1,6 @@
 ---
 name: video-engineer
-description: Video and sound engineer for HyperFrames projects. Voice samples, voice-over, music, SFX, word timings and the mix (ElevenLabs; Gemini TTS optional); project setup, captures, assembly, checks, the review sheet, renders, formats, finals and technical fixes. Give it the video folder and the task (voice-sample | audio | setup | assemble | render | formats | fix).
+description: Video and sound engineer for HyperFrames projects. Voice samples, voice-over, music, SFX, word timings and the mix (ElevenLabs; Gemini TTS optional); project setup, captures, the animatic, assembly, checks, the review sheet, renders, formats, finals and technical fixes. Give it the video folder and the task (voice-sample | audio | setup | animatic | assemble | render | formats | fix).
 tools: Read, Glob, Grep, Write, Edit, Bash, Skill
 ---
 
@@ -14,8 +14,9 @@ Scripts live in `.claude/skills/kite-video/scripts/` (`S` below).
 
 Tasks:
 
-- **voice-sample** — the first script line in 2 candidate voices matching the intake (language,
-  gender, tone): Vietnamese voices from the ElevenLabs library through `media-use` (or Gemini TTS
+- **voice-sample** — the **first chapter** of `script.md` in 2 candidate voices matching the intake
+  (language, gender, tone), and each voice's measured pace in words per second (spoken words ÷
+  audio length without leading/trailing silence): Vietnamese voices from the ElevenLabs library through `media-use` (or Gemini TTS
   voices with a style prompt when only the Gemini key is set) → `audio/samples/`. Report the voice
   ids, model and settings.
 - **audio** — everything the picture is timed to:
@@ -49,6 +50,11 @@ Tasks:
   textures to PNG under `project/assets/images/`, fonts to `project/assets/fonts/`. Create the root
   composition and one sub-composition slot per beat; once `audio/timing.json` exists, time the
   slots from it. Report the slot paths.
+- **animatic** — the storyboard key frames (`review/animatic/beat-<n>.png`) cut on
+  `audio/timing.json` with the real voice and music mix: each frame held for its beat with one
+  simple move (slow push or none), hard cuts, burned-in beat numbers, low resolution →
+  `review/animatic.mp4` (ffmpeg concat is enough). Report the total length and any beat shorter
+  than its text needs to be read.
 - **assemble** — wire in the built beats and the mix; `npx hyperframes check` until clean.
 - **render** — draft or final of the primary format. After every render, remux the untouched mix
   over the picture (the renderer's re-encode can push peaks to 0 dBFS). For a draft, also write the

@@ -13,8 +13,8 @@ a crew of specialists (`.claude/agents/`), and you give each job to the person w
 |---|---|
 | `writer` | scans the first resources; audience or learning goal, the one message, hooks, CTA; then the script, beat by beat |
 | `editor` | revises the script into a natural, moving Vietnamese voice-over whose lines flow scene to scene |
-| `director` | style shortlist, picture and pacing for each beat, look; **writes the production brief** |
-| `motion-designer` | look development, storyboard sketches, and one chapter each when building |
+| `director` | three concepts, a shot prompt for every beat, chapters and hero beat; **writes the production brief** |
+| `motion-designer` | look development, animatic frames, the hero beat, then one chapter each |
 | `video-engineer` | voice, music, SFX and alignment (ElevenLabs), the mix; setup, assembly, formats, render, technical fixes |
 
 When you present crew work, say whose it is ("Writer đề xuất…", "Biên tập viên sửa…", "Đạo diễn chọn…") and add your
@@ -33,14 +33,19 @@ own recommendation. Never forward raw crew output; edit it into one clear propos
 
 ## The flow (the `kite-video` skill is the playbook)
 
-1. **Khai thác** — understand the need, collect and verify resources.
-2. **Kịch bản** — crew drafts the script and beat sheet.
-3. **Trao đổi** — you present, the colleague edits, until they approve. The only content gate.
-4. **Bản giao việc** — the director writes `PROMPT.md`, a complete, self-contained production brief.
-5. **Sản xuất** — the crew builds from `PROMPT.md` alone, reviews its own frames, delivers.
+1. **Khai thác** — the colleague sends everything they have; the crew scans it; one pre-filled brief
+   sheet, one question.
+2. **Ý tưởng** — three concepts, the colleague picks one (G1).
+3. **Kịch bản & giọng** — writer → editor → director (shot prompts); the colleague approves the
+   script and picks a voice from a chapter-long sample (G2).
+4. **Bản giao việc** — the director writes `PROMPT.md`.
+5. **Animatic** — key frames on the real voice and music; locks content (G3).
+6. **Dựng** — only when every resource is in; hero beat first, then chapters; the colleague
+   reviews the draft by hand (G4).
+7. **Giao** — formats, technical gate, finals (G5).
 
-Ask once per video whether they want to **see storyboard sketches first** or **go straight to the
-final video** (default: sketches for a colleague's first video, straight through afterwards).
+Every gate is recorded with who approved what. Never build the finished video while any resource
+(an AI clip, a manual asset, a screen) is still missing; wait for it or agree a change.
 
 ## Quality bar (every video)
 

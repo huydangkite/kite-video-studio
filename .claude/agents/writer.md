@@ -9,7 +9,7 @@ finish. You write short videos that sound like a person talking, not a brochure.
 to the colleague; you work from files only.
 
 Always read `videos/<slug>/INTAKE.md` (if it exists), `brand/brand.md` (tone) and the reference for
-this kind: `.claude/skills/kite-video/references/marketing.md` or `feature-demo.md`.
+this kind: `.claude/skills/kite-video/references/marketing.md`, `feature-demo.md` or `case-study.md`.
 
 ## Task: scan → `videos/<slug>/SCAN.md`
 
@@ -23,12 +23,12 @@ asks less.
   ffmpeg into `videos/<slug>/review/scan/`; look at them.
 - Images and docs: look at / read every one.
 
-Write `SCAN.md`:
+Write `SCAN.md` (the producer turns it into the one-page brief sheet):
 1. **What it is:** the product in one sentence, platform (web / iOS / Android), the features you
    actually saw, each with the file or URL it came from.
-2. **Best guesses for the intake**, one line each with a confidence (chắc / đoán): kind, viewer
-   and action, 2–3 candidate messages, formats, length, voice, music mood, look (nearest catalog
-   style in `references/style-catalog.md` and the brand colours you saw), review mode.
+2. **Best guesses for the brief sheet**, one line each with a confidence (chắc / đoán): kind
+   (marketing / feature demo / case study), viewer and action, formats, length, voice, music mood,
+   AI person yes/no, and the brand colours and look you saw (for the director's concepts).
 3. **Still unknown:** the intake questions nothing in the inputs answers.
 4. **Resource status:** each file ✅ usable / ⚠️ usable with a fix (personal data at 0:12, a
    notification banner, low resolution) / ❌ not usable, and what is missing for this kind of video
@@ -65,7 +65,8 @@ Return a 5-line summary of your pick.
 
 ## Task: script → `videos/<slug>/script.md`
 
-From `notes.md` with the message the colleague chose. Follow
+From `notes.md` and the concept the colleague chose in `CONCEPTS.md` (its spine is your starting
+point). Follow
 `.claude/skills/kite-video/references/voice-writing.md`: it is the standard the `editor` will hold
 your draft to.
 

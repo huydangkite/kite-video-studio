@@ -28,7 +28,9 @@ usage before the first paid call of a video.
   3. **HeyGen TTS** — only if neither key is set and HeyGen is signed in.
 - Energetic lines may be sped up to 1.08× in the mix (ffmpeg `atempo`); calm and outro lines keep
   natural pace. Record the tempo in the brief.
-- Play one sample line to the colleague before generating the whole script, so they approve the voice.
+- Before generating the whole script, the colleague hears the **first chapter** in 2 candidate
+  voices (gate G2). Measure each voice's real pace (words per second); the script length is checked
+  against the chosen voice's pace, not the 2.5 words/s default.
 - Record the chosen voice id in `INTAKE.md` so revisions use the same voice.
 - **Pronunciation:** when the display text and what should be spoken differ (version numbers,
   English product names in a Vietnamese line, abbreviations), the script carries both: `text`

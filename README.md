@@ -46,21 +46,26 @@ cd kite-video-studio
 ./studio        # mở Claude Opus 5.5 ở mức nỗ lực rất cao (xhigh)
 ```
 
-Rồi nói bạn cần gì:
+Rồi nói bạn cần gì, và **gửi luôn mọi thứ đang có** (link website, ảnh, video quay màn hình, tài liệu):
 
-> Tôi muốn làm video demo tính năng xuất báo cáo PDF trên web, khoảng 1 phút.
+> Tôi muốn làm video demo tính năng xuất báo cáo PDF trên web, khoảng 1 phút. (kèm video quay màn hình)
 
-> Làm video marketing 30 giây cho app mobile Kite, đăng TikTok và Facebook.
+> Làm video marketing 30 giây cho app mobile Kite, đăng TikTok và Facebook. Đây là link: …
 
-### Năm bước nhà sản xuất sẽ dẫn bạn đi
+### Bảy bước nhà sản xuất sẽ dẫn bạn đi
 
 | Bước | Bạn làm gì | Đội làm gì phía sau |
 |---|---|---|
-| **1. Khai thác** | Trả lời từng câu (có sẵn lựa chọn mặc định, "ok" là đủ). Gửi tài nguyên khi được hỏi. | Marketer (hoặc chuyên gia hướng dẫn sản phẩm) đề xuất thông điệp. Mọi file bạn gửi đều được kiểm tra ngay. |
-| **2. Kịch bản** | Chờ vài phút. | Người viết kịch bản viết lời đọc và chữ trên màn hình. Đạo diễn chia cảnh, chọn chuyển động. |
-| **3. Trao đổi** | Duyệt hoặc xin sửa kịch bản. Nghe 2 giọng mẫu, chọn một. | Nhà sản xuất sửa theo ý bạn tới khi bạn duyệt. |
-| **4. Bản giao việc** | Không cần làm gì. | Đạo diễn viết `PROMPT.md`: bản giao việc đầy đủ cho đội sản xuất. Bạn giữ lại để làm lại hoặc chia sẻ. |
-| **5. Sản xuất** | (Tuỳ chọn) duyệt bản phác từng cảnh. Nhận video. | Thu giọng và dựng khung song song, dựng từng chương song song, gửi bạn bản nháp; bạn xem và yêu cầu sửa tới khi ok, rồi xuất mọi khổ hình. |
+| **1. Khai thác** | Gửi mọi tài nguyên đang có. Đọc **một phiếu brief** đã điền sẵn, "duyệt" hoặc sửa dòng nào. | Người viết quét link, ảnh, video để hiểu sản phẩm và đoán sẵn các lựa chọn. |
+| **2. Ý tưởng** ① | Chọn 1 trong 3 hướng ý tưởng (hoặc ghép). | Đạo diễn đưa 3 hướng khác nhau: ý tưởng, mạch chuyện, 2 giây mở đầu, phong cách, khoảnh khắc ấn tượng. |
+| **3. Kịch bản & giọng** ② | Duyệt kịch bản, nghe 2 giọng đọc nguyên một chương và chọn một. | Người viết → biên tập viên (cho lời tự nhiên, nối mạch) → đạo diễn (prompt chuyển động từng cảnh). |
+| **4. Bản giao việc** | Không cần làm gì. | Đạo diễn viết `PROMPT.md`. |
+| **5. Animatic** ③ | Xem bản phác có giọng và nhạc thật; duyệt là **khoá nội dung**. | Thu giọng, nhạc; dựng khung tĩnh từng cảnh ghép theo giọng. |
+| **6. Dựng** ④ | Chờ đủ tài nguyên (vd clip người AI). Xem bản nháp, xin sửa tới khi ok. | Chỉ dựng khi đủ tài nguyên; dựng cảnh "hero" làm chuẩn, rồi các chương song song. |
+| **7. Giao** ⑤ | Duyệt bản cuối. | Xuất mọi khổ hình, đo âm lượng và lỗi kỹ thuật. |
+
+①–⑤ là các mốc duyệt; mỗi mốc được ghi lại ai duyệt, lúc nào, nói gì. Sau khi duyệt animatic, đổi
+lời hoặc thứ tự sẽ phải dựng lại phần liên quan; nhà sản xuất sẽ báo trước.
 
 Video nằm trong `videos/<ngày>-<tên>/final/`.
 
@@ -84,14 +89,16 @@ Nói như với một đạo diễn thật, càng cụ thể càng tốt:
 **Video demo cần một video quay màn hình.** Video marketing cho web chỉ cần link trang sản phẩm
 là bắt đầu được.
 
-## 4. Hai loại video
+## 4. Ba loại video
 
-| | Video marketing | Video demo tính năng |
-|---|---|---|
-| Mục đích | Làm người xem muốn dùng thử | Người xem biết cách dùng |
-| Độ dài | 15 / 30 / 45 giây | 45 / 60 / 90 giây |
-| Nhịp | Mở đầu gây chú ý → vấn đề → 2–4 khoảnh khắc sản phẩm → kêu gọi hành động | Tiêu đề → khi nào cần → 3–6 bước có đánh số → kết quả → tìm hiểu thêm |
-| Khổ hình | 9:16 cho TikTok/Reels, 1:1 cho feed, 16:9 cho web | 16:9 cho web, 9:16 cho mobile |
+| | Video marketing | Video demo tính năng | Case study / chào bán B2B |
+|---|---|---|---|
+| Mục đích | Làm người xem muốn dùng thử | Người xem biết cách dùng | Lãnh đạo khách hàng tin và đồng ý bước tiếp |
+| Độ dài | 15 / 30 / 45 giây | 45 / 60 / 90 giây | 45–120 giây |
+| Nhịp | Mở đầu gây chú ý → vấn đề → 2–4 khoảnh khắc sản phẩm → kêu gọi hành động | Tiêu đề → khi nào cần → 3–6 bước có đánh số → kết quả → tìm hiểu thêm | Bối cảnh khách → điểm nghẽn → giải pháp → cách hoạt động trên quy trình của họ → bằng chứng → bước tiếp |
+| Khổ hình | 9:16 cho TikTok/Reels, 1:1 cho feed, 16:9 cho web | 16:9 cho web, 9:16 cho mobile | 16:9 (phòng họp, email) |
+
+Case study nhắc tên, logo hoặc dữ liệu của khách cần **xác nhận bằng văn bản** của khách.
 
 ## 5. Câu hỏi thường gặp
 
@@ -99,8 +106,8 @@ là bắt đầu được.
 lượng dùng trên tài khoản công ty. Trước khi tạo âm thanh, nhà sản xuất báo ước tính (bao
 nhiêu giây giọng, giây nhạc, số hiệu ứng) và chờ bạn đồng ý.
 
-**Mất bao lâu?** Khai thác và kịch bản khoảng 10–15 phút trò chuyện. Sản xuất một video 30 giây
-có thể mất 30–60 phút máy chạy (ước tính). Trong lúc đó bạn làm việc khác được.
+**Mất bao lâu?** Khai thác, ý tưởng và kịch bản khoảng 20–40 phút trò chuyện. Animatic thêm khoảng
+15 phút; dựng một video 30 giây 30–60 phút máy chạy (ước tính). Trong lúc đó bạn làm việc khác được.
 
 **Video của tôi lưu ở đâu?** Trong `videos/` trên máy bạn. Thư mục này không được đưa lên kho chung.
 
@@ -117,13 +124,13 @@ Lần sau chỉ cần nói *"làm video giống công thức demo tính năng"*.
 
 | File | Là gì |
 |---|---|
-| `CLAUDE.md` | Vai nhà sản xuất, bảng phân vai đội, luồng 5 bước, chuẩn chất lượng |
+| `CLAUDE.md` | Vai nhà sản xuất, bảng phân vai đội, luồng 7 bước và 5 mốc duyệt, chuẩn chất lượng |
 | `.claude/skills/kite-video/SKILL.md` | Kịch bản làm việc của nhà sản xuất, từng bước và điều kiện chuyển bước |
-| `.claude/skills/kite-video/references/` | Câu hỏi khai thác, danh sách tài nguyên, mẫu bản giao việc, quy tắc chuyển động, cách chấm điểm, thư viện câu lệnh, mẫu phim "biến hình UI" |
+| `.claude/skills/kite-video/references/` | Phiếu brief, danh sách tài nguyên, playbook chuyển động theo loại video, 55 phong cách, giọng văn, âm thanh, người AI, làm thủ công, mẫu bản giao việc, cách duyệt |
 | `.claude/agents/` | 5 chuyên gia: writer, editor, director, motion-designer, video-engineer |
 | `brand/` | Bộ nhận diện. **Đội thiết kế cần điền `brand/brand.md` và thêm logo trước khi phát hành.** |
 
 Phần thiết kế cảnh, giọng, nhạc và dựng dùng bộ kỹ năng HyperFrames. Studio thêm lớp của công ty:
 vai trò, luồng làm việc và chuẩn chất lượng. Các kỹ thuật lấy từ khoá học "How to build motion
 design studio with Opus 5.5" (@0xMovez): bản giao việc của đạo diễn, phong cách tham khảo, chuyển
-động có quán tính, vòng tự chấm điểm, nhiều khổ hình từ một bản dựng.
+động có quán tính, nhiều khổ hình từ một bản dựng.

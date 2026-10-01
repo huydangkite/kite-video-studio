@@ -32,6 +32,9 @@ unreadable text at phone width, or a wrong CTA. Everything else is the colleague
   the `motion-designer` for that chapter; timing, audio, render → `video-engineer`.
 - Send only the affected chapters. Add a line to `PROMPT.md` → Revisions.
 - Batch all of one round's notes into one pass; re-render once; show the colleague again.
+- The colleague's "ok" on a draft is gate **G4** (picture lock); their "ok" on the finals is **G5**.
+  Record both in `INTAKE.md` → Approvals. Notes that change words, order or timing after G3 are a
+  content change: say what it costs before doing it.
 - The colleague's "ok" ends it. After 3 rounds on the same issue, say what is limiting it and offer
   a choice instead of another round.
 
@@ -42,7 +45,7 @@ Report numbers, not impressions. `video-engineer` runs these on every final:
 ```bash
 F=videos/<slug>/final/<slug>-<ratio>.mp4
 ffprobe -v error -show_entries stream=codec_name,width,height,r_frame_rate,sample_rate,channels -show_entries format=duration $F
-ffmpeg -i $F -af ebur128=peak=true -f null - 2>&1 | tail -12      # −14 LUFS social / −16 web, true peak ≤ −1 dBTP
+ffmpeg -i $F -af ebur128=peak=true -f null - 2>&1 | tail -12      # −14 LUFS social / −16 web, true peak ≤ −1.5 dBTP
 ffmpeg -i $F -vf blackdetect=d=0.1:pix_th=0.05 -an -f null - 2>&1 | grep black_start   # none outside intended fades
 ```
 

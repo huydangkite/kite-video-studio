@@ -10,7 +10,7 @@ the first suggestion for shots without speech).
 
 ## When to use a person
 
-- Only when the colleague asks for it, or accepts it when offered at intake (question 9, look).
+- Only when the colleague asks for it, or says yes on the brief sheet ("Người AI trong video").
 - Presenter: an intro, a "here's what's new" host, a feature-demo guide.
 - Scene person: someone at a desk or on the move using the product, a reaction, a context shot.
 - **Customer role (dramatised):** an AI actor plays a typical user in a scenario ("a shop owner

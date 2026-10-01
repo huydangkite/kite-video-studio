@@ -24,11 +24,11 @@ A style is grammar layered **on top of** `brand/brand.md`, never instead of it.
 "One display face + one UI face, one accent" holds across the **whole film**, not per style: a
 three-style film still has one display face and one accent.
 
-## Choosing (Phase 1, question 9)
+## Choosing (inside the concepts, gate G1)
 
-The producer asks `director` for a shortlist: **3 base styles** that fit the kind, product,
-audience and platform, each with one line on why. Present them with the director's pick first.
-Filters, in order:
+The colleague never browses this catalog. The `director` picks a style for each of the three
+concepts (`CONCEPTS.md`) and describes it in plain Vietnamese; the colleague chooses a concept,
+and the style comes with it. Filters the director applies, in order:
 
 1. **Kind.** Feature demos use calm or medium styles whose layout keeps real UI large (the
    *Product* and *Technical* families first). High-energy styles are for marketing.

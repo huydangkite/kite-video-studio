@@ -5,7 +5,7 @@ Copy into `videos/<slug>/INTAKE.md` and fill in. Keep the colleague's own wordin
 ```markdown
 # <Video name>
 
-- Kind: marketing | feature demo
+- Kind: marketing | feature demo | case study
 - Product / platform: <name> — web | iOS | Android
 - Viewer & action: <who> → <what they should do>
 - Message: "<one sentence>"
@@ -13,9 +13,10 @@ Copy into `videos/<slug>/INTAKE.md` and fill in. Keep the colleague's own wordin
 - Length: <n>s
 - Language / voice: vi | en — <gender, tone> | no voice-over
 - Music: <mood> | none
+- Concept: CONCEPTS.md direction <A|B|C>
 - Look: base style `<catalog name>` (+ guests `<name>` for <chapter>) | reference <file/link>
   → style_guide.md · style colours: yes/no · style display face: yes/no
-- Review mode: storyboard first | straight to video
+- Voice pace: <N> words/s measured on the chosen voice
 - Generation: voice api|manual · music api|manual · sfx api|manual · ai-people api|manual|none
 - Requested by: <name>, <date>
 
@@ -32,11 +33,20 @@ Copy into `videos/<slug>/INTAKE.md` and fill in. Keep the colleague's own wordin
 | Screen recording | ⚠️ | inputs/flow.mov — 1080×2340, 48s; notification at 0:12 to crop |
 | Logo | ❌ | waiting for design team |
 
-## Approval
+## Approvals
 
-- Script: script.md — approved <date>, "<colleague's words>"
-- Voice: <provider, voice id> — picked from samples <date>
-- Brief: PROMPT.md written <date>
+| Gate | Date | Who (name, role) | Their exact words | What they saw (file, version) |
+|---|---|---|---|---|
+| Brief sheet | | | | |
+| G1 Ý tưởng | | | | CONCEPTS.md |
+| G2 Kịch bản & giọng | | | | script.md vN, audio/samples/… |
+| G3 Animatic | | | | review/animatic.mp4 |
+| Resource gate | | producer | all ✅ | PROMPT.md §5 |
+| G4 Bản nháp | | | | review/draft-N/draft.mp4 |
+| G5 Bản cuối | | | | final/… |
+
+A gate answered with "làm đi, lát review" is *pending*, not passed: note it and show the artefact
+again with the next one.
 
 ## Decisions & limitations
 
