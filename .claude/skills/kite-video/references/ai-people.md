@@ -41,14 +41,17 @@ the first suggestion for shots without speech).
    20+ generated or licensed reference images; record the character id in `INTAKE.md` so
    revisions and later videos use the same face. Describe the character in plain terms (age range,
    style, setting) consistent with the brand's audience.
-2. **Presenter** — Lipsync from the character image or a short generated clip plus the approved
+2. **Character speaking a short line** (customer role, dialogue) — Flow/Veo may generate the voice
+   with the clip (manual route); the words are checked verbatim against the script after
+   transcription. The character's voice is not the narrator's.
+3. **Presenter** — Lipsync from the character image or a short generated clip plus the approved
    ElevenLabs voice line (`audio/vo/<beat>-<n>.wav`): the voice is ours, Higgsfield only animates
    the face. One clip per voice line, so timing still follows `audio/timing.json`. Check Vietnamese
    mouth shapes on the first clip before generating the rest.
-3. **Scene person** — image-to-video from a still of the character (keeps the face), 5–8s per clip,
+4. **Scene person** — image-to-video from a still of the character (keeps the face), 5–8s per clip,
    one action per clip, camera move stated (static, slow push, orbit). Pick the model per shot;
    Higgsfield exposes several (Veo, Kling, its own).
-4. Download every result into `videos/<slug>/inputs/ai/<beat>-<name>.mp4` with the prompt, model,
+5. Download every result into `videos/<slug>/inputs/ai/<beat>-<name>.mp4` with the prompt, model,
    character id and seed in `inputs/ai/log.md`. Verify each clip (hands, faces, flicker, the
    screen area clean for compositing) before it counts as a resource; regenerate at most twice,
    then fall back to a design-only shot.

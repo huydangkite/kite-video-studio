@@ -56,8 +56,9 @@ save). Each block has:
 | Voice-over (Vietnamese) | ElevenLabs web · the colleague's own recording | One file per script line, named `audio/vo/<beat>-<n>.mp3`; same voice and settings for every line. Paste the exact line from `script.md`. |
 | Music bed | ElevenLabs Music web · Suno · Udio | Give genre, BPM, length, sections (intro/build/drop/tail), "instrumental, no vocals". |
 | SFX | ElevenLabs SFX web · a licensed library | One file per sound, `audio/sfx/<id>.mp3`. |
-| Person, no speech (scene / customer role), b-roll | **Google Flow** (first choice) · Grok Imagine · Kling · Higgsfield web | Flow runs Veo: use **Ingredients to Video** with the character image for the same face in every shot, **Frames to Video** when the start/end frame must match a layout, **Scenebuilder** to extend a shot. Needs a Google AI Pro/Ultra plan. Discard the audio it generates. |
-| Person speaking (presenter) | Higgsfield web · HeyGen | The tool must accept **our** voice file (upload audio → lipsync). Flow (Veo) and Grok generate their own voice: use them only for shots without speech. |
+| Person, no speech (scene / customer role), b-roll | **Google Flow** (first choice) · Grok Imagine · Kling · Higgsfield web | Flow runs Veo: use **Ingredients to Video** with the character image for the same face in every shot, **Frames to Video** when the start/end frame must match a layout, **Scenebuilder** to extend a shot. Needs a Google AI Pro/Ultra plan. For shots without speech, discard the audio it generates. |
+| Person speaking a short line on screen (customer role, dialogue) | **Google Flow** · Higgsfield web · HeyGen | Flow (Veo) generates the voice and lip-sync from the prompt: put the exact line in quotes, state language ("speaks Vietnamese"), voice (gender, age, tone) and "no background music". One line per clip (≤ 8s). The voice is the character's own, not the narrator's. |
+| Presenter across several shots (narrator on camera) | Higgsfield web · HeyGen | Upload **our** voice file (lipsync), so the presenter sounds the same in every shot and timing follows `audio/timing.json`. Flow can also do it, but each clip may come out with a slightly different voice; only for a 1–2 shot presenter, and keep the character prompt identical. |
 | Character reference image | Google Flow / Gemini (Imagen) · Higgsfield Soul · Midjourney · Grok | Generate once, save as `inputs/ai/character.png`, reuse for every shot (in Flow, as an ingredient). |
 
 ## Licensing (say it once, in the order)
@@ -72,6 +73,10 @@ present or not; extract frames and look (faces, hands, flicker, text or logos, t
 for compositing). Say what you found in one line. If it fails, say exactly what to change in the
 prompt or setting and ask for one retry; after two, fall back to a design-only shot.
 
+- A clip with its own spoken line (Flow): transcribe it (`npx hyperframes transcribe`) and check the
+  words against the script **verbatim**, Vietnamese tones included; a wrong word means regenerate.
+  Keep the dialogue track, discard any music or effects in it, and time that beat to the clip's
+  real length (it replaces the voice-over for that beat in `audio/timing.json`).
 - Voice files from outside: normalise to WAV, trim silence, then word timings with
   `npx hyperframes transcribe` (local, free), since there is no key for alignment.
 - Music from outside: fit the beat grid and arrange (`voice-and-audio.md`) exactly as with generated
