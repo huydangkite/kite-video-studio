@@ -1,8 +1,8 @@
 # Kite Video Studio
 
 Làm **video marketing** và **video demo tính năng** cho sản phẩm web / mobile bằng cách trò chuyện
-với một **nhà sản xuất** AI. Phía sau nhà sản xuất là một đội 4 chuyên gia: người viết (thông
-điệp + kịch bản), đạo diễn, motion designer và kỹ sư video (kiêm âm thanh). Bạn chỉ làm việc với
+với một **nhà sản xuất** AI. Phía sau nhà sản xuất là một đội 5 chuyên gia: người viết (thông
+điệp + kịch bản), biên tập viên kịch bản, đạo diễn, motion designer và kỹ sư video (kiêm âm thanh). Bạn chỉ làm việc với
 nhà sản xuất.
 
 ---
@@ -120,7 +120,7 @@ Lần sau chỉ cần nói *"làm video giống công thức demo tính năng"*.
 | `CLAUDE.md` | Vai nhà sản xuất, bảng phân vai đội, luồng 5 bước, chuẩn chất lượng |
 | `.claude/skills/kite-video/SKILL.md` | Kịch bản làm việc của nhà sản xuất, từng bước và điều kiện chuyển bước |
 | `.claude/skills/kite-video/references/` | Câu hỏi khai thác, danh sách tài nguyên, mẫu bản giao việc, quy tắc chuyển động, cách chấm điểm, thư viện câu lệnh, mẫu phim "biến hình UI" |
-| `.claude/agents/` | 4 chuyên gia: writer, director, motion-designer, video-engineer |
+| `.claude/agents/` | 5 chuyên gia: writer, editor, director, motion-designer, video-engineer |
 | `brand/` | Bộ nhận diện. **Đội thiết kế cần điền `brand/brand.md` và thêm logo trước khi phát hành.** |
 
 Phần thiết kế cảnh, giọng, nhạc và dựng dùng bộ kỹ năng HyperFrames. Studio thêm lớp của công ty:

@@ -19,6 +19,11 @@ Copy into `videos/<slug>/INTAKE.md` and fill in. Keep the colleague's own wordin
 - Generation: voice api|manual · music api|manual · sfx api|manual · ai-people api|manual|none
 - Requested by: <name>, <date>
 
+## First resources & scan
+
+- Sent at the start: <links, files>
+- SCAN.md: <date> — confirmed guesses: <list>; corrected: <list>
+
 ## Resources
 
 | Item | Status | File / note |

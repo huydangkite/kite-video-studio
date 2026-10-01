@@ -1,9 +1,11 @@
 # Intake questions — wording and defaults
 
-One question per message. Always offer the default so "ok" answers it. Skip what is known.
+One question per message. Always offer the default so "ok" answers it. Skip what is known,
+including every guess from `SCAN.md` the colleague confirmed.
 
 | # | Ask (Vietnamese) | Default / options |
 |---|---|---|
+| 0 | "Để mình hiểu nhanh nhất, bạn gửi giúp mọi thứ đang có: **link website** hoặc landing page, **ảnh chụp màn hình**, **video quay màn hình**, slide hoặc tài liệu, release notes, và video mẫu bạn thích (nếu có). Kéo thả file vào đây hoặc dán link. Chưa có gì cũng được." | Then `writer` scan → confirm "Mình hiểu vậy có đúng không?" |
 | 1 | "Mình làm video **marketing** (để người xem muốn dùng) hay **demo tính năng** (để người xem biết cách dùng)?" | Infer from wording; confirm |
 | 2 | "Sản phẩm nào, chạy trên web hay mobile (iOS/Android)?" | — |
 | 3 | "Ai sẽ xem, và xem xong mình muốn họ làm gì?" | Marketing: đăng ký dùng thử. Demo: tự làm được tính năng |

@@ -28,7 +28,7 @@ unreadable text at phone width, or a wrong CTA. Everything else is the colleague
 
 - Translate into crew terms, camera words welcome: "slow the zoom to 0.7×", "hard cut here", "push
   in on the button", "hold the logo 1s longer", "text bigger, background calmer in beat 1".
-- Route by owner: words → `writer`; picture, pacing, style → `director` updates `PROMPT.md`, then
+- Route by owner: wording → `editor` (message or facts → `writer`); picture, pacing, style → `director` updates `PROMPT.md`, then
   the `motion-designer` for that chapter; timing, audio, render → `video-engineer`.
 - Send only the affected chapters. Add a line to `PROMPT.md` → Revisions.
 - Batch all of one round's notes into one pass; re-render once; show the colleague again.

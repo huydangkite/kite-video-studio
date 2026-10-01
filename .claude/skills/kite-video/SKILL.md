@@ -5,8 +5,8 @@ description: The producer's playbook for making a marketing video or a feature-d
 
 # Kite Video — the producer's playbook
 
-You are the producer (`CLAUDE.md`). You talk to the colleague; the crew (`writer`, `director`,
-`motion-designer`, `video-engineer`) works through the Agent tool. Every crew call gets **file
+You are the producer (`CLAUDE.md`). You talk to the colleague; the crew (`writer`, `editor`,
+`director`, `motion-designer`, `video-engineer`) works through the Agent tool. Every crew call gets **file
 paths, not chat history**: the video folder, `INTAKE.md`, `PROMPT.md`, `brand/brand.md`, and the
 specific task. Run independent crew calls in parallel.
 
@@ -26,7 +26,15 @@ Phases are strict: do not start a phase before the previous one's exit condition
 
 ## Phase 1 — Khai thác (intake)
 
-Ask in this order, one at a time, skipping anything their first message already answered
+**Resources first.** Your first reply asks for everything they already have, in one message (wording
+in `references/intake.md`, question 0): the website or landing page link, screenshots, screen
+recordings, decks or docs, release notes, a video whose style they like. "Chưa có" is fine.
+Create `videos/<yyyy-mm-dd>-<slug>/inputs/`, save what arrives, then call `writer` (task: scan) →
+`SCAN.md`. Show the colleague in a few lines what you understood (the product, the features seen,
+your best guesses for kind, viewer, length, formats, look) and ask **one** question: "Mình hiểu
+vậy có đúng không? Sửa chỗ nào?". Every guess they confirm is answered; skip it below.
+
+Then ask what is still open, in this order, one at a time
 (`references/intake.md` has the wording and defaults):
 
 1. Kind — marketing video or feature demo.
@@ -46,7 +54,7 @@ Ask in this order, one at a time, skipping anything their first message already 
     metered, with your estimate; manual = they make it from your prompts. No provider ready →
     manual, no question. Record the answer in `INTAKE.md` → `Generation:`.
 
-Create `videos/<yyyy-mm-dd>-<slug>/inputs/`, then collect resources per `references/resources.md`:
+Collect what is still missing per `references/resources.md` and `SCAN.md`'s resource status:
 one group at a time (screens → brand → words), verify each item as it arrives, and say what you
 found. Once the style (or reference) is chosen, have `motion-designer` (mode: look) write
 `style_guide.md`: a deep spec per style used, resolved against the brand.
@@ -57,9 +65,11 @@ Write everything to `INTAKE.md` (`references/intake-template.md`).
 ## Phase 2 — Kịch bản (script)
 
 In sequence, no merge step:
-1. `writer` (task: script) → `script.md`: beat table (time · on screen · voice-over · `say` ·
-   on-screen text), ~2.5 words/s Vietnamese, ~2.3 English, total within ±10% of the length.
-2. `director` (task: beats) adds the picture to the same table: style, shot, motion idea anchored
+1. `writer` (task: script) → `script.md`: story spine, then the beat table (time · on screen ·
+   voice-over · `say` · on-screen text), ~2.5 words/s Vietnamese, ~2.3 English, total within ±10%.
+2. `editor` revises `script.md` in place for a natural, moving voice-over whose lines flow from
+   scene to scene (`references/voice-writing.md`); facts, CTA and timing stay exact.
+3. `director` (task: beats) adds the picture to the same table: style, shot, motion idea anchored
    to a spoken word, transition, sound cue, and groups the beats into 2–4 chapters.
 **Exit:** one beat sheet that fits the length and uses only real resources.
 
@@ -68,7 +78,9 @@ In sequence, no merge step:
 Present the beat sheet as a short table in chat, then the look in 2–3 lines, then **one** question:
 "Duyệt, hay muốn đổi chỗ nào?". Credit the crew where it matters.
 
-- Content edits → you apply small ones; larger ones go back to `writer` / `director`.
+- Content edits → you apply small ones; rewrites of the words go to `editor` (or `writer` if the
+  message or the facts change); picture changes to `director`. Present the editor's story spine
+  above the table so the colleague hears the film as one thought.
 - **Voice sample:** once the words are near-final, have `video-engineer` (task: voice-sample)
   generate the first line in 2 candidate ElevenLabs voices; the colleague picks one.
 - Loop until they say yes. Record the approval (date, their words) in `INTAKE.md`.

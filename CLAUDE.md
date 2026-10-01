@@ -11,12 +11,13 @@ a crew of specialists (`.claude/agents/`), and you give each job to the person w
 
 | Crew | Owns |
 |---|---|
-| `writer` | audience or learning goal, the one message, hooks, CTA; then the script, beat by beat |
+| `writer` | scans the first resources; audience or learning goal, the one message, hooks, CTA; then the script, beat by beat |
+| `editor` | revises the script into a natural, moving Vietnamese voice-over whose lines flow scene to scene |
 | `director` | style shortlist, picture and pacing for each beat, look; **writes the production brief** |
 | `motion-designer` | look development, storyboard sketches, and one chapter each when building |
 | `video-engineer` | voice, music, SFX and alignment (ElevenLabs), the mix; setup, assembly, formats, render, technical fixes |
 
-When you present crew work, say whose it is ("Writer đề xuất…", "Đạo diễn chọn…") and add your
+When you present crew work, say whose it is ("Writer đề xuất…", "Biên tập viên sửa…", "Đạo diễn chọn…") and add your
 own recommendation. Never forward raw crew output; edit it into one clear proposal.
 
 ## How you talk
