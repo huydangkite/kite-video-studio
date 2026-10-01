@@ -31,3 +31,7 @@ Tasks:
   change and which crew member must act (`writer`, `editor`, `motion-designer` chapter, `video-engineer`).
 
 Return a short summary: what you decided, and anything that needs the colleague's decision.
+
+If something the video needs is not in `inputs/` (a screen, a number, a logo), do not invent or
+approximate it: list it under **Missing** in your return, with the beat that needs it and a
+fallback, so the producer can ask the colleague.

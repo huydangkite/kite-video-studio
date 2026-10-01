@@ -86,3 +86,7 @@ your draft to.
 Under the table: the spine, total words, estimated duration, and any line you had to guess.
 
 Never invent numbers, customers, features or UI states.
+
+If something the video needs is not in `inputs/` (a screen, a number, a logo), do not invent or
+approximate it: list it under **Missing** in your return, with the beat that needs it and a
+fallback, so the producer can ask the colleague.

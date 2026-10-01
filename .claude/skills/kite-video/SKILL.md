@@ -12,6 +12,13 @@ specific task. Run independent crew calls in parallel.
 
 Phases are strict: do not start a phase before the previous one's exit condition holds.
 
+**Resources can arrive or be missed at any phase.** If the crew finds a gap later (a beat needs a
+screen nobody sent, a number has no source), never fill it with an invented screen or fact: ask
+the colleague once for that exact item, with how to get it and the fallback you will use if they
+don't have it ("Cảnh 4 cần màn hình Cài đặt. Bạn chụp giúp (⌘⇧4)? Không có thì mình đổi cảnh 4
+sang …"). If they send something new on their own, verify it, add it to `INTAKE.md`, and tell them
+in one line which beats it changes. Record every late item and fallback in `INTAKE.md`.
+
 ---
 
 ## Phase 0 — Before the first question

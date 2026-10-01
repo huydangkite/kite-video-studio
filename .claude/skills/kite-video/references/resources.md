@@ -37,6 +37,13 @@ Skip whatever `brand/brand.md` already has.
 | Existing copy: release notes, landing text, docs | O | O | Read it, quote back the facts you will use |
 | Words/claims to avoid (legal, competitor names) | O | O | Ask once for marketing videos |
 
+## Late requests (any phase)
+
+The crew reports a missing item instead of inventing it (`writer`, `editor`, `director`: "beat 4
+needs the Settings screen; not in inputs/"). The producer asks for that one item with its "how",
+offers the fallback, and waits only as long as the colleague wants: "chưa có" means the fallback.
+New files the colleague sends unprompted are verified like any other and logged in `INTAKE.md`.
+
 ## Fallbacks (offer, never assume)
 
 - No recording for a demo → capture public pages, or design-only UI scenes clearly styled as
