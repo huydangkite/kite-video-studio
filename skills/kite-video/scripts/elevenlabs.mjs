@@ -7,10 +7,18 @@
 //               sections[{ section_name, positive_local_styles, negative_local_styles, duration_ms, lines: [] }]
 //   node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs sfx <sfx.json> <out dir> [--only=id1,id2] [--force]
 //        sfx.json = [{ id, prompt, duration }]  ->  <out dir>/<id>.mp3
+//   node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs voices [--lang=vi] [--gender=female] [--search=calm]
+//        lists library voices (id, name, accent, use case, preview URL) to pick candidates from
+//   node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs tts <lines.json> <out dir> [--only=id1,id2] [--force]
+//        lines.json = { voice_id, model_id ("eleven_v3" | "eleven_multilingual_v2" | "eleven_flash_v2_5"),
+//                       language_code: "vi", settings: { stability, similarity_boost, style, speed },
+//                       lines: [{ id, say }] }  ->  <out dir>/<id>.wav (mono 44.1 kHz, untrimmed)
+//        Same voice, model and settings for every line of a video, so separate lines sound like one read.
 //   node ${CLAUDE_PLUGIN_ROOT}/skills/kite-video/scripts/elevenlabs.mjs align <voice.wav> <text or @file.txt> <out.json>
 //        -> { words: [[text, start, end], ...] } in seconds from the start of the file
 //   Add --dry to print the request instead of sending it (no key needed).
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -100,9 +108,54 @@ async function align([wav, textArg, out]) {
   console.log(`aligned ${words.length} words -> ${out}`);
 }
 
-const commands = { music, sfx, align };
+async function get(path) {
+  const res = await fetch(`${API}${path}`, { headers: { "xi-api-key": apiKey() } });
+  if (!res.ok) throw new Error(`ElevenLabs ${path} failed: HTTP ${res.status} ${(await res.text()).slice(0, 300)}`);
+  return res.json();
+}
+
+async function voices() {
+  const opt = (k) => (flags.find((f) => f.startsWith(`--${k}=`)) || "").split("=")[1];
+  const qs = new URLSearchParams({ page_size: "30" });
+  if (opt("lang") !== undefined || !opt("search")) qs.set("language", opt("lang") || "vi");
+  if (opt("gender")) qs.set("gender", opt("gender"));
+  if (opt("search")) qs.set("search", opt("search"));
+  if (dry) { console.log(`GET ${API}/shared-voices?${qs}`); return; }
+  const data = await get(`/shared-voices?${qs}`);
+  for (const v of data.voices || [])
+    console.log([v.voice_id, v.name, v.gender, v.age, v.accent, v.use_case, (v.description || "").slice(0, 80), v.preview_url].join(" | "));
+  console.log(`${(data.voices || []).length} voices. Add a library voice to the account before using it (ElevenLabs web → Voice Library), or use its id directly if the plan allows.`);
+}
+
+async function tts([linesPath, outDir]) {
+  if (!linesPath || !outDir) throw new Error("usage: tts <lines.json> <out dir>");
+  const cfg = JSON.parse(readFileSync(linesPath, "utf8"));
+  if (!cfg.voice_id) throw new Error("lines.json needs voice_id");
+  const s = cfg.settings || {};
+  for (const line of cfg.lines.filter((l) => !only.length || only.includes(String(l.id)))) {
+    const out = join(outDir, `${line.id}.wav`);
+    if (existsSync(out) && !force) { console.log(`skip ${out} (exists; --force to redo)`); continue; }
+    const res = await post(`/text-to-speech/${cfg.voice_id}?output_format=mp3_44100_192`, {
+      text: line.say ?? line.text,
+      model_id: cfg.model_id || "eleven_multilingual_v2",
+      ...(cfg.language_code ? { language_code: cfg.language_code } : {}),
+      voice_settings: { stability: s.stability ?? 0.5, similarity_boost: s.similarity_boost ?? 0.75, style: s.style ?? 0,
+        use_speaker_boost: true, ...(s.speed ? { speed: s.speed } : {}) },
+    });
+    if (!res) continue;
+    mkdirSync(outDir, { recursive: true });
+    const mp3 = `${out}.mp3`;
+    writeFileSync(mp3, Buffer.from(await res.arrayBuffer()));
+    const ff = spawnSync("ffmpeg", ["-y", "-loglevel", "error", "-i", mp3, "-ac", "1", "-ar", "44100", out], { stdio: "inherit" });
+    rmSync(mp3, { force: true });
+    if (ff.status) throw new Error(`ffmpeg could not convert ${mp3}`);
+    console.log(`saved ${out}`);
+  }
+}
+
+const commands = { music, sfx, align, voices, tts };
 if (!commands[cmd]) {
-  console.error("usage: elevenlabs.mjs <music|sfx|align> ... (see the header of this file)");
+  console.error("usage: elevenlabs.mjs <voices|tts|music|sfx|align> ... (see the header of this file)");
   process.exit(1);
 }
 commands[cmd](args).catch((e) => { console.error(e.message); process.exit(1); });

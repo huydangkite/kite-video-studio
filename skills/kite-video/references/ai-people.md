@@ -27,8 +27,8 @@ the first suggestion for shots without speech).
   rule on fake reviews and misleading under Vietnam's advertising law), not a style choice.
 - No AI employees or experts presented as real staff.
 - **AI never draws the product.** Generate the person holding a phone or at a laptop with a blank or
-  green screen facing away or at an angle, then composite the real UI over it in HyperFrames
-  (`hyperframes-keyframes` for corner-pin / perspective). If the screen can't be replaced cleanly,
+  green screen facing away or at an angle, then composite the real UI over it in the scene (the clip's
+  frames via `clip()`, the real UI as a DOM layer with a CSS `matrix3d` corner-pin tracked per frame). If the screen can't be replaced cleanly,
   frame the shot so the screen isn't visible.
 - No real, recognisable people; no lookalikes of celebrities or the company's staff unless that
   person has consented in writing.

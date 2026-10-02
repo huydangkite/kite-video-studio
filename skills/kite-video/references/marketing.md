@@ -6,8 +6,8 @@ Goal: make the viewer want the product (or the release) and act on the call to a
 
 | Beat | Time | Job |
 |---|---|---|
-| Hook | 0–3s | A problem, a bold claim, or the product's most striking screen. No logo intro. |
-| Problem / promise | 3–8s | The pain the viewer knows, in their words. |
+| Hook | 0–2s | A problem, a bold claim, or the product's most striking screen. No logo intro. |
+| Problem / promise | 2–8s | The pain the viewer knows, in their words. |
 | Show it | 8–22s | 2–4 real product moments, one benefit each. One idea per beat, a visual change every 2–4s. |
 | Proof | 22–26s | A real number, customer logo or quote — **only if the colleague provided it**. Otherwise skip. |
 | CTA | 26–30s | Logo + one action (URL, store badge, "Dùng thử miễn phí"). Hold ≥ 2s. |

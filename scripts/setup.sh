@@ -34,18 +34,36 @@ mkdir -p "$DATA"
 "$DATA/venv/bin/python" -c 'import numpy' 2>/dev/null || "$DATA/venv/bin/python" -m pip install -q numpy \
   || echo "Không cài được numpy — video vẫn làm được, chỉ thiếu bước căn điểm drop của nhạc."
 
-say "HyperFrames skills và trình duyệt dựng video"
-npx -y hyperframes@latest skills
-npx -y hyperframes@latest browser ensure
+say "Engine dựng video (Playwright + Chromium) — môi trường riêng của plugin"
+mkdir -p "$DATA/engine"
+cp "$ROOT/skills/kite-video/engine/package.json" "$DATA/engine/package.json"
+( cd "$DATA/engine" && npm install --silent --no-audit --no-fund && npx --yes playwright install chromium )
+
+if [ "${2:-}" = "--hyperframes" ]; then
+  say "HyperFrames (tuỳ chọn, chỉ dùng khi cần)"
+  npx -y hyperframes@latest skills
+  npx -y hyperframes@latest browser ensure
+fi
 
 say "Thư mục làm việc: $WORK"
 [ -f .env ] || { cp "$ROOT/templates/env.example" .env; echo "Đã tạo .env (điền key vào đây)."; }
 mkdir -p brand videos
 [ -f brand/brand.md ] || { cp "$ROOT/templates/brand.md" brand/brand.md; echo "Đã tạo brand/brand.md mẫu."; }
-if [ ! -f .claude/settings.json ]; then
-  mkdir -p .claude && cp "$ROOT/templates/project-settings.json" .claude/settings.json
-  echo "Đã tạo .claude/settings.json (cho phép ffmpeg, node, hyperframes chạy không cần hỏi)."
-fi
+# Project settings: merge the studio's permissions, and pin PATH so every crew agent finds node/ffmpeg
+# (agents run non-interactive shells that do not load nvm or the user's profile).
+mkdir -p .claude
+TOOL_PATH="$(dirname "$(command -v node)"):$(dirname "$(command -v ffmpeg)"):/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+node -e '
+  const fs = require("fs"), [tpl, out, path] = process.argv.slice(1);
+  const base = fs.existsSync(out) ? JSON.parse(fs.readFileSync(out, "utf8")) : {};
+  const t = JSON.parse(fs.readFileSync(tpl, "utf8"));
+  base.permissions = base.permissions || {};
+  for (const k of ["allow", "deny"]) base.permissions[k] = [...new Set([...(base.permissions[k] || []), ...(t.permissions[k] || [])])];
+  base.permissions.defaultMode = base.permissions.defaultMode || t.permissions.defaultMode;
+  base.env = { ...(base.env || {}), PATH: path };
+  fs.writeFileSync(out, JSON.stringify(base, null, 2) + "\n");
+' "$ROOT/templates/project-settings.json" .claude/settings.json "$TOOL_PATH"
+echo "Đã cập nhật .claude/settings.json (quyền chạy ffmpeg, node; PATH cho các agent)."
 [ -f .gitignore ] || printf '.env\nvideos/*\n.DS_Store\n' > .gitignore
 
 say "Kiểm tra"

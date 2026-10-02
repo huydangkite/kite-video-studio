@@ -1,0 +1,17 @@
+/* Tokens from style_guide.md / brand/brand.md. Every scene reads these; never hard-code a colour in a scene. */
+@font-face { font-family: "Display"; src: local("Helvetica Neue Bold"), local("Arial Bold"); font-weight: 700; }
+@font-face { font-family: "UI"; src: local("Helvetica Neue"), local("Arial"); font-weight: 500; }
+:root {
+  --bg: #0B0B0F;
+  --surface: #16161D;
+  --line: #26262F;
+  --ink: #EDEDF2;
+  --muted: #8A8A99;
+  --accent: #2B54D9;
+  --display: "Display", system-ui, sans-serif;
+  --ui: "UI", system-ui, sans-serif;
+}
+.scene { font-family: var(--ui); color: var(--ink); }
+.headline { font-family: var(--display); font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; }
+.card { position: absolute; background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .45); }

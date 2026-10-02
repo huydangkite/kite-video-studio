@@ -31,8 +31,9 @@ Duyệt, hay sửa dòng nào?
 Defaults: marketing 30s (15/30/45), demo 60s (45/60/90), case study 60s (45–120); web/YouTube
 16:9, feed 1:1, TikTok/Reels/Shorts 9:16, meeting room 16:9; voice Vietnamese, female, clear; music
 calm for demos and case studies, upbeat for marketing; generation = API when a key is ready.
-The look is optional here: a wish ("sang như Apple") or a reference video steers the concepts;
-blank means the director proposes. Colleagues may write a catalog name they saw in the studio guide
+A reference is strongly recommended: without one, the model falls back to its default look. A wish
+("sang như Apple") or a reference steers the concepts; blank means the director proposes concrete,
+findable references with each concept. Colleagues may write a catalog name they saw in the studio guide
 (e.g. `swiss-kinetic-editorial`); then one direction uses exactly that style. The colleague sees and chooses the look at G1, with one styled
 frame per concept.
 

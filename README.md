@@ -28,8 +28,8 @@ claude
 /kite-video:setup
 ```
 
-`/kite-video:setup` cài Node, ffmpeg, Python numpy (trong môi trường riêng của plugin), bộ kỹ năng
-HyperFrames và trình duyệt dùng để dựng; rồi tạo trong thư mục làm việc: `.env` (chỗ điền key),
+`/kite-video:setup` cài Node, ffmpeg, Python numpy và engine dựng video (Playwright + Chromium, trong
+môi trường riêng của plugin); rồi tạo trong thư mục làm việc: `.env` (chỗ điền key),
 `brand/brand.md` mẫu và thư mục `videos/`. Nếu máy chưa có Homebrew, lệnh sẽ đưa đúng một dòng để
 bạn tự chạy trong Terminal (cần mật khẩu máy).
 
@@ -47,17 +47,22 @@ Kiểm tra máy bất cứ lúc nào: `/kite-video:check`. Mỗi lần mở Clau
 báo nếu thiếu gì.
 
 **Cập nhật studio:** `claude plugin update kite-video@kite-video-studio` (hoặc bật tự cập nhật trong
-`/plugin` → Marketplaces), rồi `npx hyperframes@latest skills update`.
+`/plugin` → Marketplaces), rồi gõ `/kite-video:setup` một lần để cập nhật engine.
+
+HyperFrames **không bắt buộc**. Chỉ cài khi thật cần (`/kite-video:setup hyperframes`).
 
 ## 2. Làm video
 
 ```bash
 cd ~/Documents/Kite-Video
-claude          # nhà sản xuất chạy Claude Opus 5.5, mức nỗ lực high (mặc định)
+claude          # nhà sản xuất chạy Claude Opus 5.5, mức nỗ lực xhigh (mặc định)
 ```
 
 Đổi mức nỗ lực trong phiên bằng `/effort medium | high | xhigh | max` (tối thiểu medium). Video mới
-nên dùng `xhigh`; `max` khi vài giây đầu phải gánh cả buổi ra mắt; `medium` cho sửa nhỏ.
+giữ `xhigh`; `max` khi vài giây đầu phải gánh cả buổi ra mắt; `medium` cho sửa nhỏ.
+
+Video ngắn (reel marketing tới khoảng 45 giây, làm thêm phiên bản phong cách, bản sửa) hoặc khi bạn
+nói "làm luôn" sẽ đi **làn nhanh**: chỉ hỏi bạn 2 lần (duyệt ý tưởng + kịch bản, duyệt bản nháp).
 
 Rồi nói bạn cần gì, và **gửi luôn mọi thứ đang có** (link website, ảnh, video quay màn hình, tài liệu):
 
@@ -73,9 +78,9 @@ Rồi nói bạn cần gì, và **gửi luôn mọi thứ đang có** (link webs
 | **2. Ý tưởng** ① | Chọn 1 trong 3 hướng ý tưởng (hoặc ghép). | Đạo diễn đưa 3 hướng khác nhau: ý tưởng, mạch chuyện, 2 giây mở đầu, phong cách, khoảnh khắc ấn tượng. |
 | **3. Kịch bản & giọng** ② | Duyệt kịch bản, nghe 2 giọng đọc nguyên một chương và chọn một. | Người viết → biên tập viên (cho lời tự nhiên, nối mạch) → đạo diễn (prompt chuyển động từng cảnh). |
 | **4. Bản giao việc** | Không cần làm gì. | Đạo diễn viết `PROMPT.md`. |
-| **5. Animatic** ③ | Xem bản phác có giọng và nhạc thật; duyệt là **khoá nội dung**. | Thu giọng, nhạc; dựng khung tĩnh từng cảnh ghép theo giọng. |
-| **6. Dựng** ④ | Chờ đủ tài nguyên (vd clip người AI). Xem bản nháp, xin sửa tới khi ok. | Chỉ dựng khi đủ tài nguyên; dựng cảnh "hero" làm chuẩn, rồi các chương song song. Đội tự xem lại khung hình, chấm điểm và sửa (tối đa 3 vòng) trước khi đưa bạn xem. |
-| **7. Giao** ⑤ | Duyệt bản cuối. | Xuất mọi khổ hình, đo âm lượng và lỗi kỹ thuật. |
+| **5. Storyboard & animatic** ③ | Xem khung hình từng cảnh và bản phác có giọng, nhạc thật. Duyệt là **khoá nội dung và gu hình**. | Dựng một khung hình hoàn chỉnh cho mỗi cảnh; đội tự chấm gu ít nhất 2 vòng trước khi đưa bạn xem. |
+| **6. Dựng** ④ | Chờ đủ tài nguyên (vd clip người AI). Xem bản nháp, xin sửa tới khi ok. | Dựng cảnh "hero" làm chuẩn, rồi các chương song song; mỗi chương tự chấm và sửa; nhà sản xuất chấm cả bản nháp trước khi đưa bạn. |
+| **7. Giao** ⑤ | Duyệt bản cuối. | Xuất bản cuối 60 fps có motion blur, mọi khổ hình, đo âm lượng và lỗi kỹ thuật. |
 
 ①–⑤ là các mốc duyệt; mỗi mốc được ghi lại ai duyệt, lúc nào, nói gì. Sau khi duyệt animatic, đổi
 lời hoặc thứ tự sẽ phải dựng lại phần liên quan; nhà sản xuất sẽ báo trước.
@@ -129,7 +134,7 @@ Lần sau chỉ cần nói *"làm video giống công thức demo tính năng"*.
 
 **Máy báo thiếu công cụ hoặc dựng lỗi?** Gõ `/kite-video:check` rồi làm theo dòng ❌.
 
-**Cập nhật studio?** `claude plugin update kite-video@kite-video-studio` rồi `npx hyperframes@latest skills update`.
+**Cập nhật studio?** `claude plugin update kite-video@kite-video-studio` rồi gõ `/kite-video:setup` một lần.
 
 ---
 
@@ -141,9 +146,10 @@ Repo này là **gốc plugin** và đồng thời là **marketplace** (`.claude-
 |---|---|
 | `.claude-plugin/plugin.json`, `marketplace.json` | Khai báo plugin `kite-video` và kho `kite-video-studio` |
 | `settings.json` | `"agent": "producer"`: nhà sản xuất chạy làm phiên chính |
-| `agents/producer.md` | Vai nhà sản xuất, luật studio, chuẩn chất lượng (Opus 5.5, effort high) |
+| `agents/producer.md` | Vai nhà sản xuất, luật studio, chuẩn chất lượng (Opus 5.5, effort xhigh) |
 | `agents/` | Đội: writer, editor, director, motion-designer, video-engineer |
-| `skills/kite-video/` | Playbook (SKILL.md), references (phiếu brief, playbook chuyển động, 54 phong cách, giọng văn, âm thanh, người AI, làm thủ công, mẫu bản giao việc, duyệt), scripts âm thanh + test |
+| `skills/kite-video/` | Playbook (SKILL.md), references (phiếu brief, engine, playbook chuyển động, 54 phong cách, giọng văn, âm thanh, người AI, làm thủ công, mẫu bản giao việc, duyệt), scripts âm thanh (giọng, nhạc, SFX, mix) + test |
+| `skills/kite-video/engine/` | Engine dựng video: `render.mjs` (Playwright + ffmpeg), `runtime/kv.js` (spring, timing theo chữ, cảnh), `template/` (project mẫu) |
 | `commands/` | `/kite-video:setup`, `/kite-video:check` |
 | `hooks/hooks.json` | Kiểm tra máy khi mở phiên; chặn đọc `.env` |
 | `.mcp.json` | MCP Higgsfield (người AI) |
@@ -161,12 +167,13 @@ Kiểm tra trước khi push: `claude plugin validate . --strict` và
 **Đội thiết kế cần điền `brand/brand.md` và thêm logo** trong thư mục làm việc (mẫu ở
 `templates/brand.md`).
 
-Phần thiết kế cảnh, giọng, nhạc và dựng dùng bộ kỹ năng HyperFrames. Studio thêm lớp của công ty:
-vai trò, luồng làm việc và chuẩn chất lượng.
+Về engine: theo khoá học gốc (Movez, "How to build motion design studio with Opus 5.5"), phim được
+viết thành code: một hàm `seek(t)` vẽ đúng khung hình ở thời điểm t, Playwright chụp từng khung,
+ffmpeg ghép. Studio có engine riêng theo cách đó (`skills/kite-video/engine/`, xem
+`references/engine.md`): spring dạng closed-form, timing theo từng chữ của lời đọc, render từng đoạn,
+ảnh review (contact, phone, strip) lấy thẳng từ trang, bản cuối 60 fps với 4 khung phụ để có motion
+blur. HyperFrames chỉ là tuỳ chọn, dùng khi thật sự cần (điều kiện ở `engine.md`): một số phim của
+Kite làm bằng HyperFrames trông xấu hơn bản Claude tự viết.
 
-Về engine: khoá học gốc (Movez, "How to build motion design studio with Opus 5.5") không bắt buộc
-framework; một-prompt thì Opus tự viết `index.html` + `seek(t)` + Playwright + ffmpeg. Studio giữ
-HyperFrames vì đây là pipeline dùng lại cho cả đội: nó cũng là `seek(t)` tất định (Chrome headless +
-ffmpeg), có sẵn spring dạng closed-form, ~400 khối, `check`/`snapshot`/`capture`/`transcribe`, và
-kỹ năng âm thanh. Look nào DOM + GSAP không làm được (vẽ tay, giấy, generative) thì vẽ bằng canvas
-`seek(t)` ngay trong sub-composition (`motion-rules.md` → "Technique follows the look").
+Thử engine: `node skills/kite-video/engine/render.mjs init /tmp/kv/project` rồi
+`node skills/kite-video/engine/render.mjs serve /tmp/kv/project`.

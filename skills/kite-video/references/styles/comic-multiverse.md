@@ -62,9 +62,10 @@ Yellow narration box (5px ink border, hard ink + cyan shadow), Be Vietnam Pro 80
 text; current word `#a3005a`. Inside the safe zone; nothing else in the caption band.
 
 ## Renderer notes
-Attach the SVG RGB filter only while a glitch runs (`tl.set(el, {filter: "url(#rgb)"})`, back to
-`none` a few frames later). Use `visibility` rather than `opacity: 0` to hide heavy full-frame
-layers. `immediateRender: false` on `fromTo` tweens of shared layers (flash, dots, speed lines).
+Set the SVG RGB filter only while a glitch runs (in `draw(t)`: `el.style.filter = glitchOn ? "url(#rgb)" :
+"none"`, on for a few frames). Use `visibility` rather than `opacity: 0` to hide heavy full-frame
+layers. Shared layers (flash, dots, speed lines) take their state from `t` alone, so nothing leaks
+between beats. Halftone and dot grids are baked PNG tiles, or drawn once on a canvas in `setup()`.
 
 ## Never
 Texture over readable UI; glitch on the CTA; flicker or misregistration on captions; any Marvel

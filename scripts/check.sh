@@ -19,10 +19,20 @@ fi
 command -v ffmpeg  >/dev/null 2>&1 && ok "ffmpeg"  || bad "ffmpeg"  "chưa cài (gõ /kite-video:setup)"
 command -v ffprobe >/dev/null 2>&1 && ok "ffprobe" || bad "ffprobe" "chưa cài (đi kèm ffmpeg)"
 
-if [ -f "$HOME/.claude/skills/hyperframes/SKILL.md" ] || [ -f ".claude/skills/hyperframes/SKILL.md" ]; then
-  ok "HyperFrames skills"
+ENGINE_DIR=""
+for d in "${KV_ENGINE_DEPS:-}" "$DATA/engine" "$HOME/.kite-video/engine"; do
+  [ -n "$d" ] && [ -d "$d/node_modules/playwright" ] && { ENGINE_DIR="$d"; break; }
+done
+if [ -n "$ENGINE_DIR" ] && (cd "$ENGINE_DIR" && node -e 'require("playwright").chromium.executablePath()' >/dev/null 2>&1) \
+   && [ -x "$(cd "$ENGINE_DIR" && node -p 'require("playwright").chromium.executablePath()' 2>/dev/null)" ]; then
+  ok "Engine dựng video (Playwright + Chromium)"
 else
-  bad "HyperFrames skills" "chưa cài (gõ /kite-video:setup)"
+  bad "Engine dựng video" "chưa cài Playwright/Chromium (gõ /kite-video:setup)"
+fi
+
+SKILLS="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/skills"
+if [ -f "$SKILLS/hyperframes/SKILL.md" ] || [ -f ".claude/skills/hyperframes/SKILL.md" ]; then
+  ok "HyperFrames (tuỳ chọn) đã có"
 fi
 
 if [ -x "$DATA/venv/bin/python" ] && "$DATA/venv/bin/python" -c 'import numpy' >/dev/null 2>&1; then

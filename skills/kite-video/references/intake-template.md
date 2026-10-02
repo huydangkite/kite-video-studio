@@ -40,13 +40,24 @@ Copy into `videos/<slug>/INTAKE.md` and fill in. Keep the colleague's own wordin
 | Brief sheet | | | | |
 | G1 Ý tưởng | | | | CONCEPTS.md |
 | G2 Kịch bản & giọng | | | | script.md vN, audio/samples/… |
-| G3 Animatic | | | | review/animatic.mp4 |
+| G3 Storyboard & animatic | | | | review/storyboard/beats.png, review/animatic.mp4 |
 | Resource gate | | producer | all ✅ | PROMPT.md §5 |
 | G4 Bản nháp | | | | review/draft-N/draft.mp4 |
 | G5 Bản cuối | | | | final/… |
 
 A gate answered with "làm đi, lát review" is *pending*, not passed: note it and show the artefact
 again with the next one.
+
+## Timeline
+
+| Phase | Started | Ended | Notes (rounds, waits, failures) |
+|---|---|---|---|
+| Khai thác | | | |
+| Ý tưởng (G1) | | | |
+| Kịch bản & giọng (G2) | | | |
+| Storyboard & animatic (G3) | | | |
+| Dựng (G4) | | | |
+| Giao (G5) | | | |
 
 ## Decisions & limitations
 

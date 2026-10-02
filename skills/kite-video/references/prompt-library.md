@@ -34,10 +34,8 @@ See `ui-morph.md` — XML spec with inputs / direction / structure / gotchas / s
 
 ## F. Critique pass
 
-> You are a harsh motion director, not the proud author. Score every beat 1–10 on hook (first 2s),
-> phone readability, motion, variety, composition, brand and sound sync. List the 3 worst problems
-> with timestamps — overlapping swap text, sliding instead of easing, corner labels, centered title
-> on gradient, blurry scaled text, dead beats. Fix only those, then re-score.
+The one critique prompt lives in `review.md` (taste first, then scores, then the 3 worst problems).
+Use it from there; do not keep a copy here.
 
 ## Director notes (for revisions)
 

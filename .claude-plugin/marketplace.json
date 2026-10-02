@@ -9,7 +9,7 @@
     {
       "name": "kite-video",
       "source": "./",
-      "description": "Kite Video Studio: AI producer and crew for product videos, built with HyperFrames."
+      "description": "Kite Video Studio: AI producer and crew for product videos, rendered by the studio's own seek(t) engine."
     }
   ]
 }

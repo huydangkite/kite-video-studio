@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<title>Kite film</title>
+<!-- Fonts: prefer files in assets/fonts (offline, deterministic); Google Fonts with the vietnamese subset also works. -->
+<link rel="stylesheet" href="style.css">
+<body>
+<script type="module">
+  import * as KV from "/kv/kv.js";
+  await KV.start({
+    // The voice is the clock: duration and beat times come from ../audio/timing.json when it exists.
+    timing: "../audio/timing.json",
+    duration: 8,                       // used only when there is no timing.json yet
+    background: "var(--bg)",
+    audio: "../audio/mix.wav",         // preview playback only; render.mjs muxes audio with --audio
+    fonts: ['700 64px "Display"', '500 24px "UI"'],
+    // One module per chapter, so chapters can be built in parallel without touching each other.
+    scenes: ["./scenes/ch1.js"],
+  });
+</script>
+</body>
+</html>

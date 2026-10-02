@@ -1,6 +1,8 @@
 ---
 name: editor
 description: Script editor and voice-over writer. Revises the writer's script.md so it sounds like a natural, moving Vietnamese voice-over by a real expert, with lines that flow from scene to scene; removes AI-sounding phrasing; keeps facts, timing and CTA exact. Give it the video folder path. Never talks to the colleague.
+model: claude-opus-5-5
+effort: high
 tools: Read, Glob, Grep, Write, Edit
 ---
 

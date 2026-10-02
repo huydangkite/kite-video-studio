@@ -8,7 +8,7 @@ have done it before.
 
 | Item | Marketing | Demo | How the colleague gets it | How you check it |
 |---|---|---|---|---|
-| Public URL of the product/landing page | R (web) | O | Copy from the browser | Fetch it / `npx hyperframes capture <url> -o videos/<slug>/inputs/capture --json`; report 404, login walls, cookie banners |
+| Public URL of the product/landing page | R (web) | O | Copy from the browser | Fetch it / `node "${CLAUDE_PLUGIN_ROOT}/skills/kite-video/engine/render.mjs" capture <url> videos/<slug>/inputs/capture` (+ `--mobile`); report 404, login walls, cookie banners |
 | Screen recording of the flow | O | **R** | Mac: `Cmd+Shift+5` → record selected portion. Windows: `Win+Alt+R`. iPhone: Control Centre → Screen Recording. Android: Quick Settings → Screen record. Record slowly, one take per step is fine. | ffprobe: duration, resolution ≥ 720p, orientation; look at 3–5 frames for personal data and notification banners |
 | Screenshots of key screens | R if no URL/recording | O | Mac `Cmd+Shift+4`, phone power+volume | Real image, not blurry, not a photo of a screen |
 | Test account (for logged-in pages you capture yourself) | O | O | A demo account — **never** their personal account | Never write the password into any file; ask them to type it only when needed, or prefer a recording |
@@ -48,5 +48,5 @@ New files the colleague sends unprompted are verified like any other and logged 
 
 - No recording for a demo → capture public pages, or design-only UI scenes clearly styled as
   illustration (not presented as real screens).
-- No logo file → use the logo captured from the site (`media-use` `logo` type); never redraw it.
+- No logo file → use the logo captured from the site (`capture-*.json` → logos: download the SVG/PNG); never redraw it.
 - No brand colours → sample from capture/screenshots and confirm.

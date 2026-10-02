@@ -1,8 +1,8 @@
 {
   "name": "kite-video",
-  "version": "1.1.0",
-  "description": "Kite Video Studio: make marketing, feature-demo and B2B case-study videos of web and mobile products by talking (in Vietnamese) to an AI producer and its crew, built with HyperFrames.",
+  "version": "1.2.0",
+  "description": "Kite Video Studio: make marketing, feature-demo and B2B case-study videos of web and mobile products by talking (in Vietnamese) to an AI producer and its crew, rendered by the studio's own seek(t) engine (Playwright + ffmpeg).",
   "author": { "name": "Kite", "email": "huydang@vietkite.com" },
   "repository": "https://github.com/huydangkite/kite-video-studio",
-  "keywords": ["video", "motion-design", "hyperframes", "marketing", "product-demo", "vietnamese"]
+  "keywords": ["video", "motion-design", "playwright", "marketing", "product-demo", "vietnamese"]
 }

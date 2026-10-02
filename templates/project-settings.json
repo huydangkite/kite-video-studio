@@ -6,8 +6,8 @@
       "Bash(ffprobe:*)",
       "Bash(ls:*)",
       "Bash(mkdir:*)",
+      "Bash(mktemp:*)",
       "Bash(node:*)",
-      "Bash(npx -y hyperframes:*)",
       "Bash(npx hyperframes:*)"
     ],
     "deny": [

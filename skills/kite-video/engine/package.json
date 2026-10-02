@@ -1,0 +1,9 @@
+{
+  "name": "kite-video-engine",
+  "private": true,
+  "type": "module",
+  "description": "Headless renderer for Kite Video Studio films: window.seek(t) pages rendered by Playwright, encoded by ffmpeg.",
+  "dependencies": {
+    "playwright": "1.63.0"
+  }
+}

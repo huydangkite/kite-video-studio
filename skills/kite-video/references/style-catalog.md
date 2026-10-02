@@ -1,9 +1,7 @@
 # Style catalog
 
-54 studio styles in 8 families, plus the 8 HyperFrames built-ins (`hyperframes-creative`
-`visual-styles.md`: Swiss Pulse, Velvet Standard, Deconstructed, Maximalist Type, Data Drift, Soft
-Signal, Folk Frequency, Shadow Cut), which can be named the same way. Rules for choosing, mixing and
-brand precedence are in `styles.md`; read that first.
+54 studio styles in 8 families. Rules for choosing, mixing and brand precedence are in `styles.md`;
+read that first.
 
 Two styles have a **deep spec** (layers, components, full motion language) in `styles/`:
 `glass-keynote` and `comic-multiverse`. For any other style, `motion-designer` (look mode) expands
@@ -19,7 +17,10 @@ the entry below into a deep spec with `styles/_template.md` before the brief is 
   when the brand kit has no display face. Every face must include the Google Fonts `vietnamese`
   subset; check it before use.
 - **Motion** — tier from `motion-rules.md`, ease and duration, the **signature move** that makes the
-  style recognisable, and transitions (rotate them: no two neighbouring beats share one).
+  style recognisable, and transitions (rotate them: no two neighbouring beats share one). Ease names
+  are shorthand for a feel; in `kv.js`: `power2/power3.out` → Default spring (or `ease.out3` for a
+  fade), `power4/expo.out` → Heavy spring (or `ease.out4`), `back.out` → Snappy for a hair of
+  overshoot, Playful only for stickers and mascots.
 - **Texture**: anything baked (grain, halftone, paper) is a PNG tile, never live filters (renderer
   limit, see `motion-rules.md`).
 - **Avoid**: how this style most often goes wrong.
@@ -243,7 +244,7 @@ Tour-poster typography cut to the beat · high
 - Ground: bg `#0D0D0D` · poster colours per chapter (2 max) · ink. Sig: `#FFDD00`.
 - Type: stacked condensed caps, mixed sizes like a gig poster.
 - Layout: poster compositions; UI shown as "tracklist" rows.
-- Motion: cuts on every bar (`hyperframes beats`), Snappy. Signature: the poster rebuilds line by
+- Motion: cuts on every bar (`fit-beat-grid.py`), Snappy. Signature: the poster rebuilds line by
   line on the downbeats. Transitions: beat cut.
 - Texture: print grain PNG. Avoid: cutting against the voice (voice wins).
 
@@ -252,7 +253,7 @@ Mission and people, told honestly · calm · demo-safe
 - Ground: bg `#1B1A17` · surface `#26241F` · ink `#F2EEE6` · muted `#A39D90`. Sig: `#E8B04A`.
 - Type: serif 500 for quotes, sans lower thirds with name/role.
 - Layout: real photos or recordings full-bleed, lower thirds, quote cards.
-- Motion: Heavy, slow Ken Burns (`hyperframes-keyframes`). Signature: a quote builds line by line
+- Motion: Heavy, slow Ken Burns (a slow `track()` on scale and position). Signature: a quote builds line by line
   over a still. Transitions: cut, slow push.
 - Texture: film grain PNG. Avoid: invented quotes or people.
 
@@ -436,7 +437,7 @@ Soft, rounded, tactile objects · medium
 - Ground: bg `#F3E9E2` · objects pastel (3 max) · ink `#3A2E2A`. Sig: `#F28E6B`.
 - Type: rounded sans 700.
 - Layout: UI cards as soft rounded objects with inner shadows; icons as clay shapes (asset needed:
-  generate via `media-use` image or skip).
+  generate with an image model via `ORDERS.md`, or skip).
 - Motion: Default with a soft settle. Signature: objects press down and spring back when tapped.
   Transitions: object push.
 - Texture: baked soft-shadow PNGs. Avoid: faking 3D with many live blur filters (render limit).
@@ -487,7 +488,7 @@ Late-night TV graphics · medium
 - Ground: bg `#101820` · bars `#1E3A5F` · ink `#F5F1E3`. Sig: `#FFB000`.
 - Type: broadcast sans 700 caps, lower-third bars.
 - Layout: TV lower thirds, channel bugs are part of content not decoration; UI on a "screen".
-- Motion: Default; slide-in bars. Signature: channel-change cut with a 2-frame roll (registry block).
+- Motion: Default; slide-in bars. Signature: channel-change cut with a 2-frame roll (drawn on canvas).
   Transitions: channel change.
 - Texture: scanline PNG (light). Avoid: scanlines over readable UI text.
 
@@ -506,7 +507,7 @@ Chrome type, bubbles, 2000s optimism · high
 - Type: display extended 800 [Unbounded] with chrome fill (baked or gradient on type, never on UI).
 - Layout: chrome word + real UI in glossy-free cards.
 - Motion: Default; chrome shimmer once per word. Signature: liquid chrome word morphs into the next.
-  Transitions: liquid wipe (registry).
+  Transitions: liquid wipe (a canvas mask).
 - Texture: chrome PNG. Avoid: chrome or gloss on UI chrome (banned).
 
 ### `neon-cyberpunk`

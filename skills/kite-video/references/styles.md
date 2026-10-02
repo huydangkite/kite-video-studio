@@ -1,10 +1,11 @@
 # Styles — named looks, and how to mix them per scene
 
 A style is a named visual grammar: ground colours, type treatment, layout, motion signature,
-texture and the blueprints that suit it. The catalog is `style-catalog.md`: 54 studio styles in
-8 families plus the 8 HyperFrames built-ins. Two have a deep spec in `styles/` (`glass-keynote`,
+texture and the moves that suit it. The catalog is `style-catalog.md`: 54 studio styles in
+8 families. Two have a deep spec in `styles/` (`glass-keynote`,
 `comic-multiverse`); any other style gets one written from `styles/_template.md` once it is chosen.
-A style gives a video a look nobody else has without a reference video, and lets different chapters
+A style names a look; a reference (a real film or frames) shows it. Pair a style with a reference
+whenever you can: named-only styles drift back to the model's default. Styles also let different chapters
 of one film speak differently ("Apple-like opening, Linear-style UI, blueprint how-it-works,
 Nike-style finale").
 
@@ -76,20 +77,15 @@ purpose:
 - `PROMPT.md` §4 → the style block: for every style used, its deep spec from `style_guide.md`
   (tokens resolved against the brand), and the style map by chapter. The brief must stand alone, so
   the crew never has to open the catalog.
-- `project/style.json` → `video-engineer` writes the resolved tokens per style (colours, fonts,
-  easing, durations) and each beat sub-composition reads its style's tokens as CSS variables. A
-  style switch is then a variable swap, not a rebuild.
+- `project/style.css` → `video-engineer` writes the resolved tokens per style as CSS variables, one
+  class per style (`.style-precision-dark-product { --bg: #0B0B0F; --surface: #16161D; … }`); each
+  scene root takes its style's class, so a style switch is a class swap, not a rebuild. The motion
+  tier and signature move live in `ANIMATION_GUIDE.md`.
 
-```json
-{
-  "base": "precision-dark-product",
-  "styles": {
-    "precision-dark-product": { "bg": "#0B0B0F", "surface": "#16161D", "line": "#26262F",
-      "ink": "#EDEDF2", "muted": "#8A8A99", "accent": "<brand accent>",
-      "display": "<brand display>", "ui": "<brand UI>", "ease": "power3.out", "dur": 0.5 }
-  },
-  "beats": { "1": "athletic-impact", "2": "precision-dark-product" }
-}
+```css
+:root { --accent: <brand accent>; --display: "<brand display>"; --ui: "<brand UI>"; }
+.style-precision-dark-product { --bg: #0B0B0F; --surface: #16161D; --line: #26262F; --ink: #EDEDF2; --muted: #8A8A99; }
+.style-athletic-impact { --bg: #0A0A0A; --ink: #FFFFFF; /* … */ }
 ```
 
 ## Checking it
