@@ -59,8 +59,10 @@ Tasks:
   than its text needs to be read.
 - **assemble** — wire in the built beats and the mix; `npx hyperframes check` until clean.
 - **render** — draft or final of the primary format. After every render, remux the untouched mix
-  over the picture (the renderer's re-encode can push peaks to 0 dBFS). For a draft, also write the
-  review sheet (`references/review.md`). For a final, run the technical gate in
+  over the picture (the renderer's re-encode can push peaks to 0 dBFS). For a draft, also make the
+  review images (`references/review.md`: contact, phone, one strip per signature move, beat
+  snapshots, loop check for loop films). On a critique fix, re-render and remake the images for the
+  changed beats. For a final, run the technical gate in
   `references/review.md` and report the numbers; write a social encode when the file is over ~100 MB.
 - **formats** — each extra format as its own composition that shares the timing and has its own
   layout variables. Never crop.

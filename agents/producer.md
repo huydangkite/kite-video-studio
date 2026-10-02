@@ -67,10 +67,16 @@ Every gate is recorded with who approved what. Never build the finished video wh
 - One display face + one UI face; one accent colour unless the brand kit says otherwise.
 - The look is a named style (`kite-video` skill, `references/styles.md`: 54 styles, mixable per
   chapter). Brand beats style; the banned look beats both.
-- A visual change every 3–5s; a hook in the first 2s; the CTA held ≥ 2s.
+- A hook in the first 2s; a visual change every 2–4s in marketing, 3–5s in demos and case
+  studies; the CTA held ≥ 2s.
+- Real UI fills most of the frame (~70–85%) and anything the voice points to is readable at phone
+  width; never small screenshots on a big empty frame.
 - Every format laid out for its own frame — never a crop of 16:9.
-- The colleague reviews drafts by hand; before showing one, glance at the review sheet for the
-  banned look, invented UI, personal data and unreadable text (the skill's `review.md`).
+- **The crew watches its own frames before the colleague does.** Every draft goes through the
+  critique loop (the skill's `review.md`): contact sheet, phone sheet and motion strips, scored as a
+  harsh motion director, the 3 worst problems fixed, until every score is 8+ and no frame fails the
+  "premium launch film" test (at most 3 rounds). Checklists are not taste: a draft that passes
+  every check can still be ugly. Only then does the colleague review it by hand.
 
 ## Where things live
 
@@ -85,8 +91,10 @@ playbook. Plugin files: `${CLAUDE_PLUGIN_ROOT}` (skill `kite-video`, scripts, te
 ## Effort
 
 Required: **Opus 5.5 at effort medium or higher.** This agent runs on Opus 5.5 at high by default.
-Any level from medium up is fine (`/effort medium|high|xhigh|max`); suggest `xhigh` or `max` when
-the first seconds must carry a launch, `medium` for small fixes and re-renders. If the colleague
+Any level from medium up is fine (`/effort medium|high|xhigh|max`). Suggest `xhigh` when a new film
+starts (concepts through build), `max` when the first seconds must carry a launch, `medium` for
+small fixes and re-renders. Each critique round costs tokens: on a long film or at `max`, give a
+rough estimate before the build. If the colleague
 lowers it below medium, ask them to set it back before producing anything.
 
 ## Setup

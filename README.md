@@ -56,7 +56,8 @@ cd ~/Documents/Kite-Video
 claude          # nhà sản xuất chạy Claude Opus 5.5, mức nỗ lực high (mặc định)
 ```
 
-Đổi mức nỗ lực trong phiên bằng `/effort medium | high | xhigh | max` (tối thiểu medium).
+Đổi mức nỗ lực trong phiên bằng `/effort medium | high | xhigh | max` (tối thiểu medium). Video mới
+nên dùng `xhigh`; `max` khi vài giây đầu phải gánh cả buổi ra mắt; `medium` cho sửa nhỏ.
 
 Rồi nói bạn cần gì, và **gửi luôn mọi thứ đang có** (link website, ảnh, video quay màn hình, tài liệu):
 
@@ -73,7 +74,7 @@ Rồi nói bạn cần gì, và **gửi luôn mọi thứ đang có** (link webs
 | **3. Kịch bản & giọng** ② | Duyệt kịch bản, nghe 2 giọng đọc nguyên một chương và chọn một. | Người viết → biên tập viên (cho lời tự nhiên, nối mạch) → đạo diễn (prompt chuyển động từng cảnh). |
 | **4. Bản giao việc** | Không cần làm gì. | Đạo diễn viết `PROMPT.md`. |
 | **5. Animatic** ③ | Xem bản phác có giọng và nhạc thật; duyệt là **khoá nội dung**. | Thu giọng, nhạc; dựng khung tĩnh từng cảnh ghép theo giọng. |
-| **6. Dựng** ④ | Chờ đủ tài nguyên (vd clip người AI). Xem bản nháp, xin sửa tới khi ok. | Chỉ dựng khi đủ tài nguyên; dựng cảnh "hero" làm chuẩn, rồi các chương song song. |
+| **6. Dựng** ④ | Chờ đủ tài nguyên (vd clip người AI). Xem bản nháp, xin sửa tới khi ok. | Chỉ dựng khi đủ tài nguyên; dựng cảnh "hero" làm chuẩn, rồi các chương song song. Đội tự xem lại khung hình, chấm điểm và sửa (tối đa 3 vòng) trước khi đưa bạn xem. |
 | **7. Giao** ⑤ | Duyệt bản cuối. | Xuất mọi khổ hình, đo âm lượng và lỗi kỹ thuật. |
 
 ①–⑤ là các mốc duyệt; mỗi mốc được ghi lại ai duyệt, lúc nào, nói gì. Sau khi duyệt animatic, đổi
@@ -162,3 +163,10 @@ Kiểm tra trước khi push: `claude plugin validate . --strict` và
 
 Phần thiết kế cảnh, giọng, nhạc và dựng dùng bộ kỹ năng HyperFrames. Studio thêm lớp của công ty:
 vai trò, luồng làm việc và chuẩn chất lượng.
+
+Về engine: khoá học gốc (Movez, "How to build motion design studio with Opus 5.5") không bắt buộc
+framework; một-prompt thì Opus tự viết `index.html` + `seek(t)` + Playwright + ffmpeg. Studio giữ
+HyperFrames vì đây là pipeline dùng lại cho cả đội: nó cũng là `seek(t)` tất định (Chrome headless +
+ffmpeg), có sẵn spring dạng closed-form, ~400 khối, `check`/`snapshot`/`capture`/`transcribe`, và
+kỹ năng âm thanh. Look nào DOM + GSAP không làm được (vẽ tay, giấy, generative) thì vẽ bằng canvas
+`seek(t)` ngay trong sub-composition (`motion-rules.md` → "Technique follows the look").

@@ -45,7 +45,10 @@ look are in `motion-rules.md`; the style's own signature move is in `style_guide
 **Looks cheap (reject):** everything fading in; centered title on a gradient; slides at linear
 speed; elements popping in all at once; zoom-in-zoom-out with no reason; UI too small to read on
 a phone; text over busy motion; glow/particles to fill emptiness; transitions that call attention
-to themselves; the same move three beats in a row.
+to themselves; the same move three beats in a row. And the studio's own rejected frames: real UI
+small on a big white frame (reads as a slide deck); pale grey cards on a pale ground; seconds of
+raw scanned paper or a whole-document dump; the same card shown for many seconds; small pushes and
+slides that feel like PowerPoint; tilted sticky-note labels.
 
 ---
 
@@ -198,4 +201,9 @@ Look at the snapshot at the key moment and at 3 frames around the signature move
 - [ ] The transition out connects to the next beat (match, morph, or continuing camera).
 - [ ] Matches the hero beat's composition language (margins, type scale, depth, shadow).
 - [ ] Nothing from the banned look; nothing in "Must not".
-If a box fails, fix before returning; if it cannot be fixed, say which and why.
+- [ ] Real UI fills ~70–85% of the frame; no small screenshot on a big empty ground; strong
+      contrast between UI and ground (no pale card on pale ground).
+- [ ] Not a repeat of a card, screen or move already used in another beat.
+If a box fails, fix before returning; if it cannot be fixed, say which and why. Then run the
+critique loop (`review.md`) on the beat: the checklist is the floor, the scores and the taste
+question are the bar.

@@ -36,6 +36,12 @@ blank means the director proposes. Colleagues may write a catalog name they saw 
 (e.g. `swiss-kinetic-editorial`); then one direction uses exactly that style. The colleague sees and chooses the look at G1, with one styled
 frame per concept.
 
-Style reference handling (reference video sent): `motion-designer` in look mode extracts a frame every 0.5s (ffmpeg),
-describes palette (hex), type, shot lengths and transitions, and writes `style_guide.md` with
-**take** (grammar) and **never take** (subject, brand, copy) lists. Show it back in 3 lines.
+Style reference handling — a named style beats a described one, and a reference beats both.
+Three kinds, all welcome: **a frame** (one screenshot of a video they love: take palette, type,
+texture; never the subject), **a video** (file or link), **a library** (a folder of their own images
+or past work — a reference nobody else can copy). Sources to suggest when they have none:
+whatships.com launch videos, Dribbble motion, competitors' launch films.
+`motion-designer` in look mode extracts a frame every 0.5s from a video (ffmpeg), describes pacing
+shot by shot, palette (hex), type (family, weight, tracking), shot lengths, transitions, camera
+moves, texture, how text enters and exits, and writes `style_guide.md` with **take** (grammar) and
+**never take** (subject, brand, copy, characters) lists. Show it back in 3 lines.

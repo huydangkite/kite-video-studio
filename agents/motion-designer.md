@@ -41,8 +41,13 @@ Modes:
   beat sheet, and the tier and blueprint named in the brief. Land reveals on the spoken words
   named in the beat. Keep the chapter's beats consistent with each other. Respect the renderer limits in `motion-rules.md`. Before returning, run the
   playbook's checklist on every beat and report any box you could not tick. Follow HyperFrames' frame-worker rules (`hyperframes/references/frame-worker-core.md`).
-  Run `npx hyperframes check` on the project and snapshot each of your beats, look at the
-  snapshots, and fix before returning. Do not touch other chapters.
+  Run `npx hyperframes check` on the project, then run the **critique loop** on each of your beats
+  (`references/review.md`): a snapshot at the key moment plus a 12-frame strip around the signature
+  move, scored as a harsh motion director, 3 worst problems fixed, until every score is 8+ (at most
+  3 rounds), logged in `review/review_log.md`. Do not touch other chapters.
+  If the style's look cannot be made from DOM + GSAP (hand-drawn, paper, generative), draw that
+  layer on canvas/SVG as a pure function of the timeline's time (`motion-rules.md` → "Technique
+  follows the look").
 
 Never invent product UI. Never use anything on the banned list. Return what you built, the snapshot
-paths, and anything you could not do.
+and strip paths, each beat's final scores, and anything you could not do.

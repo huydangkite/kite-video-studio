@@ -1,6 +1,6 @@
 ---
 name: kite-video
-description: The producer's playbook for making a marketing, feature-demo or B2B case-study video of a web or mobile product. Use FIRST whenever a colleague in this studio asks to make, plan or revise a video ("làm video", "video demo", "video giới thiệu", "promo", "launch video", "case study"). Resources and a one-page brief, three concepts, script and voice, an animatic that locks content, a hero beat, the build, a hand review, delivery - with five recorded approval gates.
+description: The producer's playbook for making a marketing, feature-demo or B2B case-study video of a web or mobile product. Use FIRST whenever a colleague in this studio asks to make, plan or revise a video ("làm video", "video demo", "video giới thiệu", "promo", "launch video", "case study"). Resources and a one-page brief, three concepts, script and voice, an animatic that locks content, a hero beat, the build, a critique loop on the crew's own frames, a hand review, delivery - with five recorded approval gates.
 ---
 
 # Kite Video — the producer's playbook
@@ -124,15 +124,20 @@ animatic may use a labelled placeholder frame ("CHỜ CLIP AI — cảnh 3"); th
 colleague decides to drop the asset instead, that is a content change after G3: update the script
 and brief, re-show the affected part, then build.
 
-1. **Hero beat first** — one `motion-designer` (mode: chapter) builds only the hero beat; you glance
-   at its snapshot against `motion-playbook.md`'s "looks expensive" checklist. It becomes the
+1. **Hero beat first** — one `motion-designer` (mode: chapter) builds only the hero beat and runs
+   its critique loop; you look at its snapshot and strip yourself and do not accept it below 8 on
+   any criterion or if it would not belong in a premium launch film. It becomes the
    reference frame every chapter matches.
 2. **All chapters in parallel** — one `motion-designer` per chapter, each given the hero beat's
    snapshot and composition as the reference.
 3. **Assemble & draft** — `video-engineer`: assemble, `npx hyperframes check` clean, mix, render a
-   draft, remux, review sheet (`references/review.md`).
-4. **Colleague review** — per `references/review.md`: glance yourself, show the draft, one
-   question, route notes, re-render. Their ok records **G4**.
+   draft, remux, review images (`references/review.md`).
+4. **Critique loop** — you run the critique pass on the whole draft (`references/review.md`): score
+   the seven criteria plus the taste question, route the 3 worst problems to their owners, re-render
+   the affected beats, repeat until every score is 8+ (at most 3 rounds). Log in
+   `review/review_log.md`.
+5. **Colleague review** — show the draft with one line on what the critique fixed, one question,
+   route notes, re-render. Their ok records **G4**.
 
 ## Phase 7 — Giao (delivery) · gate G5
 
